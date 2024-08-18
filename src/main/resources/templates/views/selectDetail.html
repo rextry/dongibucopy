@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/basicLayout}"> <!-- 미기입시 일반 html -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2 th:text="${board.title}"></h2>
+	<p>
+		<span th:text="'글번호 :' + ${board.num}"></span><br>
+		<span> 작성자 :[[${board.writer}]]</span><br>
+		<span> 작성일 :[[${board.reg_date}]]</span><br>
+	</p>
+	<hr width="100%" size="1" noshade="noshade">
+	<p th:text="${board.content}"></p>
+	<div class="align-center">
+		<input type="button" value="수정"
+				th:onclick="|location.href='@{update.do(num=${board.num})}'|">
+	</div>
+	<div class="align-center">
+		<input type="button" value="삭제"
+				th:onclick="|location.href='@{delete.do(num=${board.num})}'|">
+	</div>
+	<div class="align-center">
+		<input type="button" value="목록"
+				onclick="location.href='list.do'">
+	</div>
+</div>
+</body>
+</html>

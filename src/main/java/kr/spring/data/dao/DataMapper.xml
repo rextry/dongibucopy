@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.data.dao.DataMapper">
+	<!-- 토탈 -->
+	<select id="selectTotalMain" resultType="totalVO">
+		SELECT 
+		    -- SUM의 총합 (반올림)
+		    ROUND(
+		        NVL((SELECT SUM(sub_price) FROM sub_payment), 0) +
+		        NVL((SELECT SUM(dbox_do_price) FROM dbox_donation), 0) +
+		        NVL((SELECT SUM(chal_joi_total) FROM CHAL_JOIN), 0) +
+		        NVL((SELECT SUM(pay_price) * 0.1 FROM PURCHASE), 0),
+		    0) AS total_amount,
+		
+		    -- COUNT의 총합
+		    ((SELECT COUNT(*) FROM sub_payment) +
+		     (SELECT COUNT(*) FROM dbox_donation) +
+		     (SELECT COUNT(*) FROM CHAL_JOIN) +
+		     (SELECT COUNT(*) FROM PURCHASE)) AS total_count
+		FROM dual
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+/* item_subscribe를 테두리가 있는 박스로 만듭니다. */
+.item_dbox {
+	text-align: center; /* 텍스트 가운데 정렬 */
+	width: 800px;
+	border: 1px solid #ccc;
+	border-radius: 10px; /* 둥근 테두리 */
+	padding: 10px;
+	margin: 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f9f9f9; /* 배경 색상 추가 */
+}
+
+.item_dbox img {
+	width: 30px; /* 아이콘 크기 조정 */
+	height: 30px;
+}
+
+.dbox-title-dt {
+	padding: 10px 50px 0 50px;
+}
+
+.cont-item {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.info-item {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 5px;
+	margin-top: 5px;
+}
+
+.info-item dt, .info-item dd {
+	margin: 0;
+}
+
+.info-item dt {
+	flex: 1;
+	text-align: left;
+	padding-left: 50px;
+}
+
+.info-item dd {
+	flex: 1;
+	text-align: right;
+	padding-right: 50px;
+}
+
+.header-item {
+	margin-top: 5px;
+	padding-bottom: 10px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+}
+
+.header-item dt {
+	padding-left: 50px;
+	display: flex;
+	align-items: center;
+}
+
+.header-item dt img {
+	margin-right: 10px; /* 아이콘과 텍스트 사이의 간격 */
+}
+
+.header-item dd {
+	margin-left: auto;
+	padding-right: 50px;
+}
+
+.page-container {
+	padding: 20px;
+}
+
+.tabs {
+	display: flex;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+.tab-button {
+	padding: 10px 20px;
+	cursor: pointer;
+	border: none;
+	background-color: #f1f1f1;
+	margin-right: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.tab-button:hover {
+	background-color: #ddd;
+}
+
+.tab-button.active {
+	background-color: #007bff;
+	color: white;
+	border-bottom: 2px solid white;
+}
+
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}
+
+.item_dbox {
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.header-item dt a img {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.header-item dt a {
+	display: flex;
+	align-items: center;
+}
+
+.cont-item dl.info-item {
+	margin-bottom: 10px;
+}
+
+/* 탭 내용의 공통 스타일 */
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}
+
+/* 결제내역 테이블 스타일 */
+#paymentHistory .page-main {
+	padding: 20px;
+	border-radius: 8px;
+	margin-top: 20px;
+}
+
+#dboxMyPropose .page-main {
+	padding: 20px;
+	border-radius: 8px;
+	margin-top: 20px;
+}
+
+#paymentHistory h3, #dboxMyPropose h4{
+	margin-top: 0;
+	font-size: 24px;
+	color: #333;
+}
+
+#paymentHistory .result-display {
+	padding: 20px;
+	text-align: center;
+	color: #666;
+	font-size: 18px;
+}
+
+#paymentHistory .striped-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#paymentHistory .striped-table th, #paymentHistory .striped-table td {
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+#paymentHistory .striped-table th {
+	background-color: #f5f5f5;
+	color: #333;
+	font-weight: bold;
+}
+
+#paymentHistory .striped-table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+#paymentHistory .align-center {
+	text-align: center;
+}
+
+#paymentHistory .align-right {
+	text-align: right;
+}
+
+#paymentHistory .align-right a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+#paymentHistory .align-right a:hover {
+	text-decoration: underline;
+}
+
+#paymentHistory .page {
+	margin-top: 20px;
+	text-align: center;
+}
+
+#paymentHistory .pagination {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+#paymentHistory .pagination a {
+	color: #007bff;
+	padding: 8px 16px;
+	text-decoration: none;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+}
+
+#paymentHistory .pagination a:hover {
+	background-color: #f1f1f1;
+}
+
+#search_form{
+	margin-top:25px;
+}
+
+.small{
+	font-size:10px;
+	margin-top:20px;
+}
+
+.real-small{
+	font-size:11px;
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+							<!--레이아웃의 타이틀  >  내용의 타이틀 -->  <!--/* 이주석은 변환될 때 제거됨 */-->
+<title layout:title-pattern="$LAYOUT_TITLE > $CONTENT_TITLE">게시판</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+	<div th:replace="fragments/header::header"></div>
+	<div layout:fragment="content"></div>
+	<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+	//초대한 회원의 id 구하기
+	private String findMemberId(TalkRoomVO vo,MemberVO user) {
+		String member_id = "";
+		long[] members = vo.getMembers();
+		for(int i=0;i<members.length;i++) {
+			String temp_id = memberService.selectMember(members[i]).getId();
+			//초대한 사람의 아이디는 제외
+			if(!user.getId().equals(temp_id)) {
+				member_id += temp_id;
+				if(i < members.length-1) member_id += ", ";
+			}
+		}
+		return member_id;
+	}

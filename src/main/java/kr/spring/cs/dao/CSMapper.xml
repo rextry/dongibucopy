@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.cs.dao.CSMapper">
+	<!-- 문의 등록 -->
+	<insert id="insertInquiry" parameterType="inquiryVO">
+		INSERT
+		INTO inquiry
+			(inquiry_num,
+			mem_num,
+			inquiry_category,
+			inquiry_title,
+			inquiry_filename,
+			inquiry_content)
+		VALUES
+			(inquiry_seq.nextval,
+			#{mem_num},
+			#{inquiry_category},
+			#{inquiry_title},
+			#{inquiry_filename, jdbcType=VARCHAR},
+			#{inquiry_content})
+	</insert>
+	<!-- 문의 수정 -->
+	<update id="updateInquiry" parameterType="inquiryVO">
+		UPDATE
+		inquiry
+		SET  inquiry_category=#{inquiry_category},
+			 inquiry_title=#{inquiry_title},
+			 inquiry_filename=#{inquiry_filename, jdbcType=VARCHAR},
+			 inquiry_content=#{inquiry_content}
+		WHERE inquiry_num=#{inquiry_num}
+	</update>
+	
+	<!-- 문의 답변 -->
+	<update id="replyInquiry" parameterType="map">
+	    UPDATE inquiry
+	    SET inquiry_reply = #{inquiry_reply},
+	        inquiry_rdate = SYSDATE
+	    WHERE inquiry_num = #{inquiry_num}
+	</update>
+	
+	<!-- 관리자 문의 조건절 -->
+	<sql id="inquirySearch">
+		<where>
+			<if test="status != null and status == 2">
+				inquiry_reply IS NOT NULL
+			</if>
+			<if test="status != null and status == 3">
+				inquiry_reply IS NULL
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 관리자 문의 카운트 -->
+	<select id="selectInquiryListCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*) FROM inquiry
+		<include refid="inquirySearch"></include>
+	</select>
+	
+	<!-- 관리자 문의목록 -->
+	<select id="selectInquiryList" parameterType="map" resultType="inquiryVO">
+		SELECT *
+		FROM (
+		    SELECT c.*, rownum rnum FROM (
+		        SELECT a.*,  b.mem_nick, b.mem_email
+		        FROM inquiry a
+		        JOIN member b ON a.mem_num = b.mem_num
+		        <include refid="inquirySearch"></include>
+		        ORDER BY a.inquiry_date DESC)c)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}	
+		]]>
+	</select>
+	
+	<!-- 관리자 faq 조건절 -->
+	<sql id="faqSearch">
+		<where>
+			<if test="category != null">
+				faq_category=#{category}
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 관리자 faq 목록 -->
+	<select id="selectFaqList" parameterType="map" resultType="faqVO">
+        SELECT *
+        FROM faq a
+        <include refid="faqSearch"></include>
+        ORDER BY a.faq_num ASC
+	</select>
+	
+	<!-- 관리자 신고 조건절 -->
+	<sql id="reportSearch">
+		<where>
+			<if test="status != null">
+				report_status=#{status}
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 관리자 신고 카운트 -->
+	<select id="selectReportListCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*) FROM report
+		<include refid="reportSearch"></include>
+	</select>
+	
+	<!-- 관리자 신고 목록 -->
+	<select id="selectReportList" parameterType="map" resultType="reportVO">
+		SELECT *
+		FROM (
+		    SELECT b.*, rownum rnum 
+		    FROM (SELECT * 
+		    	  FROM report a
+		       	  <include refid="reportSearch"></include>
+		          ORDER BY a.report_date DESC)b)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}	
+		]]>
+	</select>
+	
+	<!-- 신고 작성 -->
+	<insert id="insertReport" parameterType="reportVO">
+		INSERT INTO REPORT(
+						report_num,
+						mem_num,
+						reported_mem_num,
+						report_source,
+						chal_num,
+						chal_rev_num,
+						dbox_re_num,
+						report_type,
+						report_content,
+						report_filename)
+					VALUES(
+						report_seq.nextval,
+						#{mem_num},
+						#{reported_mem_num},
+						#{report_source},
+						#{chal_num, jdbcType=VARCHAR},
+						#{chal_rev_num, jdbcType=VARCHAR},
+						#{dbox_re_num, jdbcType=VARCHAR},
+						#{report_type},
+						#{report_content},
+						#{report_filename, jdbcType=VARCHAR})
+	</insert>
+	
+	
+	
+	<!-- 신고 상세 -->
+	<select id="selectReportDetail" parameterType="long" resultType="reportVO">
+		SELECT
+			r.*, a.mem_nick mem_nick, b.mem_nick reported_mem_nick, b.mem_status reported_mem_status 
+		FROM report r
+		JOIN member a
+		ON (r.mem_num=a.mem_num)
+		JOIN member b
+		ON (r.reported_mem_num=b.mem_num)
+		WHERE report_num=#{report_num}
+	</select>
+	
+	<!-- 관리자 신고 답변 -->
+	<update id="replyReport" parameterType="map">
+        UPDATE report 
+        SET report_reply=#{report_reply}, 
+            report_status=#{report_status}, 
+            report_rdate=SYSDATE 
+        WHERE report_num=#{report_num}
+    </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

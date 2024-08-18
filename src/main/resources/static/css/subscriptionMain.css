@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+body {
+	background-color: white;
+}
+
+.question-box {
+	margin-top: 40px;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
+
+#icon {
+	width: 180px;
+	height: 200px;
+}
+
+.accordion-section {
+	width: 100%;
+	margin: 0 20px;
+}
+
+.accordion-item {
+	border-radius: 5px;
+	padding: 20px 0;
+	transition: background-color 0.3s ease;
+}
+.accordion-item .accordion-body {
+	transition: background-color 0.3s ease;
+}
+
+.accordion-header {
+	padding: 0px;
+	font-size: 1em;
+	color: #000;
+	color: black;
+}
+
+.accordion-item:hover {
+	cursor: pointer;
+	background-color: #ddd;
+}
+
+.accordion-body {
+	padding-top: 20px !important;
+	display: none;
+	background-color: #ffffff; /* 본문 배경색 */
+}
+
+.accordion-item:hover .accordion-body {
+	cursor: pointer;
+	background-color: #ddd;
+}
+
+.accordion-body.open {
+	display: block;
+}
+
+.accordion-icon {
+	font-size: 0.8em;
+}
+/* 추가적인 스타일 조정 */
+
+.align-right {
+	float: right;
+	font-size: 0.8em;
+	line-height: 1.5em; /* 줄 높이 조정 */
+	margin-right: 1em;
+}
+
+.header-hr {
+	border: none; /* 기본 테두리 제거 */
+	height: 3px; /* 선의 두께 설정 */
+	background-color: black; /* 선의 색상 설정 */
+	margin: 0;
+	width: 100%;
+}
+
+.item-hr {
+	width: 100%;
+	border: none; /* 기본 테두리 제거 */
+	height: 1px; /* 선의 두께 설정 */
+	background-color: black; /* 선의 색상 설정 */
+	margin: 0;
+}
+
+/*카테고리 아이템*/
+.ct-item {
+	margin: 2rem 0 !important;
+}
+
+.ct-item .icon {
+	width: 60%;
+}
+
+.ct-item .dcate_name {
+	font-size: 1rem;
+}
+
+/*자주묻는 질문*/
+#faq_container {
+	margin-top: 8rem;
+}

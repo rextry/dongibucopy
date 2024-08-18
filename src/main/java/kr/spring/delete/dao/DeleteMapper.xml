@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.delete.dao.DeleteMapper">
+	<!-- 리더일때 챌린지 불러오기 -->
+	<select id="selectChallengesByMember" parameterType="long" resultType="long">
+		SELECT chal_num
+        FROM challenge 
+        WHERE mem_num=#{mem_num} 
+        <![CDATA[
+        AND chal_edate > SYSDATE
+        ]]>
+        AND chal_status=0
+	</select>
+
+	<!-- 챌린지 각각의 모든 결제 불러오기 -->
+	<select id="selectChalPayListByChalNum" parameterType="long" resultType="challengePaymentVO">
+		SELECT a.chal_pay_num, a.od_imp_uid, chal_joi_num, chal_num 
+		FROM chal_payment a 
+		LEFT OUTER JOIN chal_join 
+		USING(chal_joi_num) 
+		LEFT OUTER JOIN challenge 
+		USING (chal_num)
+		WHERE chal_num=#{chal_num}
+	</select>
+
+	<!-- 리더가 아닐때 모든 결제 불러오기 -->
+	<select id="selectNonLeaderChallengesByMember" parameterType="long" resultType="challengePaymentVO">
+		SELECT a.chal_pay_num, a.od_imp_uid, a.mem_num, chal_joi_num, chal_num
+		FROM chal_payment a 
+		LEFT OUTER JOIN chal_join 
+		USING(chal_joi_num)
+        LEFT OUTER JOIN challenge b
+        USING(chal_num) 
+        <![CDATA[
+        WHERE b.chal_edate > SYSDATE
+        ]]>
+        AND a.mem_num=#{mem_num}
+        and b.chal_status=0
+	</select>
+	
+	<!-- 진행중인 개설 기부박스에 기부한 도네이션 불러오기 -->
+	<select id="selectOngoingDboxByMember" parameterType="long" resultType="dboxdonationVO">
+		SELECT *
+		FROM dbox_donation
+		WHERE dbox_num IN (SELECT dbox_num
+		                    FROM dbox
+		                    WHERE dbox_status=3
+		                    AND mem_num=#{mem_num})
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

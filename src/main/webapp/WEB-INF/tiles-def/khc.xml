@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="subscriptionMain" extends="main">
+		<put-attribute name="title" value="정기기부 메인페이지"/>
+		<put-attribute name="css" value="/WEB-INF/views/subscription/subscriptionCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/subscription/subscriptionMain.jsp"/>
+	</definition>
+	<definition name="categoryList" extends="main">
+		<put-attribute name="title" value="기부 카테고리 관리"/>
+		<put-attribute name="css" value="/WEB-INF/views/category/categoryCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/category/categoryList.jsp"/>
+	</definition>
+	<definition name="insertCategory" extends="main">
+		<put-attribute name="title" value="기부 카테고리 등록"/>
+		<put-attribute name="css" value="/WEB-INF/views/category/categoryCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/category/insertCategory.jsp"/>
+	</definition>
+	<definition name="categoryUpdate" extends="main">
+		<put-attribute name="title" value="기부처 및 기부 카테고리 수정"/>
+		<put-attribute name="css" value="/WEB-INF/views/category/categoryCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/category/updateCategory.jsp"/>
+	</definition>
+	<definition name="categoryDetail" extends="main">
+		<put-attribute name="title" value="기부처 및 기부 카테고리 상세"/>
+		<put-attribute name="body" value="/WEB-INF/views/category/categoryDetail.jsp"/>
+	</definition>
+	<definition name="paymentResultView" extends="main">
+		<put-attribute name="title" value="정기기부 신청 결과"/>
+		<put-attribute name="body" value="/WEB-INF/views/common/resultView.jsp"/>
+	</definition>
+	<definition name="subscriptionList" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 나의 정기기부 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/subscription/subscriptionList.jsp"/>
+	</definition>
+	<definition name="paymentHistory" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 정기기부 결제내역"/>
+		<put-attribute name="body" value="/WEB-INF/views/subscription/paymentHistory.jsp"/>
+	</definition>
+	<definition name="subscriptionDetail" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 정기기부 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/subscription/subscriptionDetail.jsp"/>
+	</definition>
+	<definition name="refundRequest" extends="adminInquiry">
+		<put-attribute name="title" value="환불 신청 관리" />
+		<put-attribute name="css" value="/WEB-INF/views/cs/csCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/cs/refundRequest.jsp"/>
+	</definition>		
+	<definition name="AdminSubscription" extends="adminInquiry">
+		<put-attribute name="title" value="회원 정기기부 관리" />
+		<put-attribute name="css" value="/WEB-INF/views/cs/csCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/cs/adminSubscription.jsp"/>
+	</definition>
+	<definition name="categoryList" extends="adminInquiry">
+		<put-attribute name="title" value="정기기부 목록" />
+		<put-attribute name="css" value="/WEB-INF/views/cs/csCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/category/categoryList.jsp"/>
+	</definition>
+	
+</tiles-definitions>
+
+
+
+
+
+
+
+
+

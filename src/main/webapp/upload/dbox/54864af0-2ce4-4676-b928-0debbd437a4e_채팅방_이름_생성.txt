@@ -1,0 +1,35 @@
+//채팅방 이름 생성 방식 정하기(자동/수동)             
+	$('#name_checked').click(function(){
+		if($('#name_checked').is(':checked')){//채팅방 이름 자동 생성
+			$('#basic_name').attr('type','hidden');
+			if(member_list.length > 1){
+				makeRoom_name();
+			}
+		}else{//채팅방 이름 수동 생성
+			$('#basic_name').attr('type','text');
+			$('#name_span').text(''); //채팅방 이름 표시 텍스트 초기화
+		}
+	});
+	
+    // 채팅방 이름 생성             
+	function makeRoom_name(){
+		let name = '';
+		$.each(member_list,function(index,item){
+			if(index>0) name += ',';
+			name += item;
+		});
+		if(name.length>55){
+			name = name.substring(0,55) + '...';
+		}
+		$('#basic_name').val(name);
+		$('#name_span').text(name);
+	}
+	
+	//채팅방 생성 전송
+	$('#talk_form').submit(function(){
+		if(member_list.length<=1){//이미 배열에 현재 로그인한 유저(채팅방 개설자)가 기본 등록되어 있어서 로그인한 유저 포함 최소 2명이 되어야 채팅 가능
+			alert('채팅에 참여할 회원을 검색하세요!');
+			$('#member_search').focus();
+			return false;
+		}
+	});

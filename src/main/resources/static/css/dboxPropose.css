@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+.dbox_information {
+	margin: 20px;
+}
+
+.pr-steps {
+	margin-top: 1rem !important;
+}
+
+.pr-step .card-body {
+	min-height: 12rem;
+}
+
+.pr-arrow {
+	width: 3rem !important;
+	text-align: center;
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0 !important;
+}
+
+.pr-step .card-title {
+	font-size: 1.3rem;
+}
+
+.pr-btn-div {
+	padding: 0 !important;
+}
+
+.pr-custom-btn {
+	line-height: 1.7 !important;
+	padding: 4px 12px;
+	border-radius: 6px;
+	color: #fff;
+	background-color: #5a6f80;
+	border: none;
+}
+
+.pr-custom-btn:hover {
+	background-color: #5bc1ac;
+}
+
+/*nav*/
+.nav_buttons {
+	border: none;
+	padding: 8px 40px;
+	background-color: #5bc1ac;
+	color: #fff;
+	transition: background-color 0.3s ease;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav_buttons:hover:not(:disabled) {
+    background-color: #58a696; 
+}
+
+.nav_buttons:disabled {
+    background-color: #e8ebea;
+}
+
+.pr-btn-left {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px; 
+}
+
+.pr-btn-right {
+    border-top-right-radius: 6px; 
+    border-bottom-right-radius: 6px;
+}
+
+/*공통*/
+ul {
+	list-style: none;
+	padding: 0 !important;
+}
+
+.error-color {
+	color: red;
+}
+
+/*step1*/
+.propose-body {
+	margin: 5rem 25rem;
+}
+
+@media ( max-width : 1200px) { /* 대형 화면 크기 */
+	.propose-body {
+		margin: 4rem 20rem;
+	}
+}
+
+@media ( max-width : 992px) { /* 중간 화면 크기 */
+	.propose-body {
+		margin: 3rem 15rem;
+	}
+}
+
+@media ( max-width : 768px) { /* 작은 화면 크기 */
+	.propose-body {
+		margin: 2rem 10rem;
+	}
+}
+
+@media ( max-width : 576px) { /* 초소형 화면 크기 */
+	.propose-body {
+		margin: 1rem 5rem;
+	}
+}
+
+@media ( max-width : 400px) { /* 매우 작은 화면 크기 */
+	.propose-body {
+		margin: 1rem 2rem;
+	}
+}
+
+.pr-form-content {
+	margin-bottom: 3rem;
+}
+
+.pr-li-item {
+	margin-bottom: 3rem !important;
+}
+
+.pr-form-label {
+	font-size: 1.4rem;
+}
+
+.validation-dot {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: red;
+	border-radius: 50%;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+
+/*step2*/
+.pr-li-item textarea {
+	resize: none;
+	height: 6rem;
+}
+
+#dbox_bank, #dbox_account_name {
+	width: 24%;
+}
+
+#dbox_account {
+	width: 50%;
+}
+
+#dbox_sdate, #dbox_edate {
+	width: 46%
+}
+
+.bud_delete_btn {
+	border: none !important;
+	background-color: #d4d4d4 !important;
+	color: #fff !important;
+}
+
+.bud_delete_btn:hover {
+	background-color: #b0b0b0 !important;
+}
+
+#dbox_budget_add {
+	height: 2rem !important;
+	line-height: 1;
+	border: none;
+	background-color: #597081;
+	color: #fff;
+}
+
+#dbox_budget_add:hover {
+	background-color: #6d8394;
+}
+
+/*step3*/
+.ck-editor__editable {
+	min-height: 30rem;
+}
+
+/*end*/
+.pr-end-label {
+    font-weight: bold;
+    display: inline-block;
+    width: 6rem;
+    word-break: keep-all; /* 단어가 잘리지 않도록 설정 */
+}
+
+.pr-end-content {
+    display: inline-block;
+    width: calc(100% - 6rem); /* 라벨의 넓이를 제외한 나머지 넓이 사용 */
+    word-wrap: break-word; /* 길이가 긴 단어를 줄바꿈 */
+    white-space: normal;   /* 일반적인 줄바꿈 */
+}

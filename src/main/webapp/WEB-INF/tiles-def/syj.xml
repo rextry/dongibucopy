@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="challengeWrite" extends="main">
+		<put-attribute name="title" value="챌린지 개설하기"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeWrite.jsp"/>
+	</definition>
+	<definition name="leaderJoinForm" extends="main">
+		<put-attribute name="title" value="챌린지 신청"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/leaderJoinForm.jsp"/>
+	</definition>
+	<definition name="challengeList" extends="main">
+		<put-attribute name="title" value="참가 가능 챌린지 목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeList.jsp"/>
+	</definition>
+	<definition name="challengePastList" extends="main">
+		<put-attribute name="title" value="지난 챌린지 목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengePastList.jsp"/>
+	</definition>
+	<definition name="challengeView" extends="main">
+		<put-attribute name="title" value="챌린지 상세"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeView.jsp"/>
+	</definition>
+	<definition name="chal_chatDetail" template="/WEB-INF/views/template/layout_chalTalk.jsp">
+		<put-attribute name="title" value="챌린지 단체채팅"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/chal_chatDetail.jsp"/>
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,331 @@
+@charset "UTF-8";
+
+.main-content-container {
+	margin-top: 5rem !important;
+}
+
+.clickable-image, .clickable {
+	cursor: pointer;
+}
+
+.form-error {
+	color: #dc3545;
+}
+
+/*마이페이지 - 회원 총기부 요약*/
+#member_total_item {
+	padding: 1.5rem;
+	background-color: #faf7f7;
+	border-radius: 10px;
+	color: #4f4f4f;
+	font-weight: 600;
+	margin-bottom: 5rem;
+}
+
+.total-menu {
+	padding: 1rem 0 1.5rem 0;
+}
+
+.total-label {
+	font-size: 0.875rem;
+}
+
+.total-content {
+	font-size: 1.8rem;
+	font-family: 'Metropolis';
+	font-weight: bold;
+}
+
+.border-right {
+	border-right: 1px solid #c2c2c2;
+}
+
+.border-right-last-none {
+	border-right: none;
+}
+
+/*마이페이지 - 회원정보*/
+.my-photo {
+	border-radius: 50%;
+	border: 2px solid #ddd; /* 기본 테두리 색상 */
+}
+.my-auth{
+	border-radius: var(--border-radius-large);
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+.photo-preview {
+	border-radius: 30px;
+	object-fit: cover;
+	width: 6rem;
+	height: 6rem;
+}
+
+#photo_del {
+	width: 25px;
+	height: 25px;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ebb2b8;
+	color: #fff;
+	line-height: -2px;
+	font-weight: 400;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.position-absolute {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.photo-flex {
+	height: 6rem;
+	width: 14rem;
+}
+
+.full-height {
+	height: 100% !important;
+}
+
+.top-0 {
+	top: 0;
+}
+
+.end-0 {
+	right: 0;
+}
+
+.translate-middle {
+	transform: translate(-50%, -50%);
+}
+
+.btn-custom {
+	margin-right: 10px;
+}
+
+.img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.btn-custom {
+	border-radius: 50%;
+	padding: 0.5rem 1rem;
+}
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.input-group .form-control {
+	margin-left: -1px !important; /* Remove extra space */
+	border-radius: 0;
+}
+
+.dash {
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	margin-left: 1px !important;
+	margin-right: 1px !important;
+	width: 10px !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+.label-text {
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	margin-left: -8px !important;
+	margin-right: -1px !important;
+	width: 20px !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+.custom-btn {
+	font-size: 1rem !important; /* 글자 크기를 작게 설정 */
+	text-align: center; /* 텍스트 가운데 정렬 */
+	padding: 10px 50px !important;
+}
+
+.custom-btn:hover {
+	border: 2px solid var(--primary-color) !important;
+}
+
+.btn-center {
+	display: flex;
+	justify-content: center; /* 버튼을 오른쪽으로 정렬 */
+}
+
+.custom-cancel-btn {
+	color: #6c757d;
+	font-size: 0.875rem;
+	font-weight: 400;
+	transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.custom-cancel-btn:hover {
+	color: #525252; /* 호버 시 텍스트 색상 (더 짙은 회색) */
+	font-weight: 500 !important; /* 호버 시 글자 굵기 */
+	font-size: 0.9rem; /* 호버 시 글자 크기 (약간 커지게) */
+}
+
+/*1:1문의*/
+#inquiryContent {
+	border: 1px solid #000000;
+	margin: 5px 0;
+	white-space: pre-line;
+}
+
+#inquiryResponse {
+	margin: 5px 0;
+	white-space: pre-line;
+}
+
+/*result-body*/
+.result-display {
+	background-color: #f8f9fa;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.align-center {
+	text-align: center;
+}
+
+#result_p {
+	font-size: 1.2rem;
+	margin-top: 4rem;
+	margin-bottom: 3rem;
+	margin-top: 4rem;
+}
+
+.result-btn-custom {
+	background-color: #007bff;
+	color: white;
+}
+
+.result-btn-custom:hover {
+	background-color: #0056b3;
+}
+
+/*마이페이지 - 친구초대*/
+#rcode {
+	width: 10rem;
+	border: 1px solid #424242;
+	border-radius: 4px;
+	padding: 0.6rem 0.8rem;
+	margin-left: 1rem;
+	text-align: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+.banner-img {
+	border-radius: 30px;
+	margin-bottom: 2rem;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.sns-share-div {
+	width: 10rem !important;
+}
+
+.sns-share-div img.clickable-image {
+	display: flex;
+	margin: 0.5rem;
+	width: 4rem;
+	height: 4rem;
+	background-color: #5bc1ac;
+	padding: 0.5rem;
+	border-radius: 50%;
+}
+
+/*마이페이지 - 포인트*/
+/* 기본 폰트 크기 */
+.table-clean th, .table-clean td {
+	font-size: 1rem; /* 기본 폰트 크기 설정 */
+}
+
+/* 모바일 화면에서 폰트 크기 조정 */
+@media ( max-width : 576px) {
+	.table-clean th, .table-clean td {
+		font-size: 0.7rem; /* 모바일 화면에서 폰트 크기 축소 */
+	}
+}
+
+/* 기본 스타일 */
+.table-clean thead th {
+	border-bottom: 2px solid #dee2e6;
+	background-color: #f8f9fa;
+}
+
+.table-clean tbody td {
+	border-bottom: 1px solid #dee2e6;
+}
+
+.table-clean tbody tr:last-child td {
+	border-bottom: none;
+}
+
+/*마이페이지 - 문의*/
+#inquiryCategoryText {
+	background-color: #597081;
+	display: inline-block;
+	width: 5rem;
+	height: 2rem;
+	border-radius: 12px;
+	text-align: center;
+	color: #fff;
+	padding: 0.2rem 0.4rem;
+	margin-right: 0.5rem;
+}
+
+.document-image {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.5rem;
+}
+
+.cs-date {
+	font-size: 0.75rem;
+}
+
+/*마이페이지 - 신고*/
+.report-content {
+	display: inline-block;
+	white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+	overflow: hidden; /* 넘치는 텍스트를 숨김 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임(...)으로 표시 */
+	max-width: 300px;
+}
+
+#reportCategoryText {
+	background-color: #597081;
+	display: inline-block;
+	min-width: 6rem;
+	height: 2rem;
+	border-radius: 8px;
+	text-align: center;
+	color: #fff;
+	padding: 0.2rem 0.4rem;
+	margin-right: 0.5rem;
+}
+
+.report-image {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.5rem;
+}

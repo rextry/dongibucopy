@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.subscription.dao.SubscriptionMapper">
+	<insert id="insertSubscription" parameterType="subscriptionVO">
+ 		INSERT INTO subscription(
+ 		sub_num,
+ 		mem_num,
+ 		dcate_num,
+ 		sub_name,
+ 		sub_annony,
+ 		sub_price,
+ 		sub_ndate,
+ 		sub_status,
+ 		sub_method
+ 		<if test="easypay_method != null">
+ 		,easypay_method 	  
+ 		</if>
+ 		<if test="card_nickname != null and card_nickname != ''">
+ 		,card_nickname
+ 		</if>
+ 		)
+ 		VALUES(
+ 		#{sub_num},
+ 		#{mem_num},
+ 		#{dcate_num},
+ 		#{sub_name, jdbcType=VARCHAR},
+ 		#{sub_annoy},
+ 		#{sub_price},
+ 		#{sub_ndate},
+ 		#{sub_status},
+ 		#{sub_method, jdbcType=VARCHAR}
+ 		<if test="easypay_method != null">
+ 		,#{easypay_method} 	  
+ 		</if>
+ 		<if test="card_nickname != null and card_nickname != ''">
+ 		,#{card_nickname}
+ 		</if>
+ 		)   
+ 	</insert>
+ 	<select id="getSubscriptionByMem_num" parameterType="long" resultType="subscriptionVO">
+		 	SELECT
+	 	   *
+	    FROM (SELECT
+	            a.*,
+	            rownum rnum
+	          FROM (SELECT
+	                  *
+	                FROM subscription 				<!-- 알리아스 -->
+	                )a) WHERE mem_num=#{mem_num} ORDER BY sub_num DESC
+	</select>
+	
+	<update id="modifyPayMethod">
+    UPDATE subscription 
+    SET 
+        sub_method = #{sub_method},
+        <if test="card_nickname != null and card_nickname != ''">
+            card_nickname = #{card_nickname},
+            easypay_method = NULL
+        </if>
+        <if test="easypay_method != null">
+            easypay_method = #{easypay_method},
+            card_nickname = NULL
+        </if>
+    WHERE sub_num = #{sub_num}
+	</update>
+	
+	<select id="getSubscriptionCount" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+	    FROM subscription s
+	    LEFT JOIN dona_category dc ON s.dcate_num = dc.dcate_num
+        <if test="keyword != null and keyword != ''">
+            <if test="keyfield == 1">
+                AND (dc.dcate_charity LIKE '%' || #{keyword} || '%' OR dc.dcate_name LIKE '%' || #{keyword} || '%')
+            </if>
+            <if test="keyfield == 2">
+                AND (s.mem_num LIKE '%' || #{keyword} || '%')
+            </if>
+        </if>
+	</select>
+	
+	<select id="getSubscription" parameterType="map" resultType="subscriptionVO">
+    SELECT *
+    FROM (
+        SELECT 
+            s.*, 
+            dc.dcate_charity, 
+            dc.dcate_name,
+            ROW_NUMBER() OVER (ORDER BY s.sub_ndate DESC) AS rnum
+        FROM subscription s
+        LEFT JOIN dona_category dc ON s.dcate_num = dc.dcate_num
+        WHERE 1=1
+        <if test="keyword != null and keyword != ''">
+            <if test="keyfield == 1">
+                AND (dc.dcate_charity LIKE '%' || #{keyword} || '%' OR dc.dcate_name LIKE '%' || #{keyword} || '%')
+            </if>
+            <if test="keyfield == 2">
+                AND (s.mem_num LIKE '%' || #{keyword} || '%')
+            </if>
+        </if>
+    ) sub<![CDATA[
+    WHERE sub.rnum >= #{start} AND sub.rnum <= #{end} ]]>
+</select>
+</mapper>
+
+
+
+
+
+
+

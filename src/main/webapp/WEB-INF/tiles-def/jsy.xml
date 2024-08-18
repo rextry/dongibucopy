@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="goodsList" extends="main">
+		<put-attribute name="title" value="상품목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsList.jsp"/>
+	</definition>
+	<definition name="goodsWrite" extends="main">
+		<put-attribute name="title" value="상품등록"/>
+		<put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsWrite.jsp"/>
+	</definition>
+	<definition name="goodsView" extends="main">
+		<put-attribute name="title" value="상품상세"/>
+		<put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsView.jsp"/>
+	</definition>
+	<definition name="goodsModify" extends="main">
+		<put-attribute name="title" value="상품 수정"/>
+		<put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsModify.jsp"/>
+	</definition>
+	<definition name="cartList" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 장바구니"/>
+		<put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/cart/cartList.jsp"/>
+	</definition>
+	<definition name="purchaseHistory" extends="mypageLayout">
+    <put-attribute name="title" value="구매내역"/>
+    <put-attribute name="css" value="/WEB-INF/views/goods/goodsCSS.jsp"/>
+    <put-attribute name="body" value="/WEB-INF/views/goods/purchaseHistory.jsp"/>
+</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+
+

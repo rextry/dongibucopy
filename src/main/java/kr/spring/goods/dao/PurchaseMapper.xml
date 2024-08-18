@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.goods.dao.PurchaseMapper">
+     <!-- 개별 구매를 위한 SQL -->
+<insert id="insertPurchase" parameterType="kr.spring.goods.vo.PurchaseVO">
+    INSERT INTO purchase (purchase_num, mem_num, item_num, imp_uid, merchant_uid, pay_price, pay_date, pay_status, delivery_status, delivery_address, point_used, pamount)
+    VALUES (purchase_seq.nextval, #{mem_num}, #{item_num}, #{imp_uid,jdbcType=VARCHAR}, #{merchant_uid}, #{pay_price}, SYSDATE, #{payStatus}, '배송 준비 중', #{delivery_address}, #{point_used}, #{pamount})
+</insert>
+<select id="getLastInsertedPurchaseNum" resultType="long">
+        SELECT purchase_seq.currval FROM dual
+    </select>
+    <!-- 장바구니 선택 항목 구매 아이템 추가 SQL -->
+
+    <select id="getPurchaseListByMember" parameterType="long" resultType="kr.spring.goods.vo.PurchaseVO">
+    SELECT p.purchase_num, p.mem_num, p.item_num, i.item_name, i.item_photo, p.imp_uid, 
+           p.pay_price AS amount, p.pay_date AS payDate, p.pay_status AS payStatus, p.delivery_status AS deliveryStatus,p.delivery_address, p.point_used,
+           (SELECT SUM(pi.item_price * pi.cart_quantity) 
+            FROM purchase_item pi 
+            WHERE pi.purchase_num = p.purchase_num) AS totalAmount
+    FROM purchase p
+    LEFT JOIN item i ON p.item_num = i.item_num
+    WHERE p.mem_num = #{mem_num}
+</select>
+
+    <select id="getPurchaseItems" parameterType="long" resultType="kr.spring.cart.vo.CartVO">
+    SELECT pi.item_num, pi.cart_quantity, pi.item_price, i.item_name, i.item_photo
+    FROM purchase_item pi
+    JOIN item i ON pi.item_num = i.item_num
+    WHERE pi.purchase_num = #{purchase_num}
+</select>
+
+    <update id="updateRefundStatus" parameterType="map">
+        UPDATE purchase
+        SET pay_status = #{status}
+        WHERE imp_uid = #{impUid}
+    </update>
+	
+	<insert id="insertPurchaseItems" parameterType="kr.spring.cart.vo.CartVO">
+    INSERT INTO purchase_item (purchase_num, item_num, cart_quantity, item_price)
+    VALUES (#{purchase_num}, #{item_num}, #{cart_quantity}, #{price})
+</insert>
+	
+    <update id="updateDeliveryStatus">
+        UPDATE purchase
+        SET delivery_status = #{deliveryStatus}
+        WHERE purchase_num = #{purchase_num}
+    </update>
+
+
+	<select id="getPurchaseByImpUid" resultType="kr.spring.goods.vo.PurchaseVO">
+    SELECT * FROM purchase WHERE imp_uid = #{impUid}
+</select>
+
+    <update id="updateDeliveryStatusByImpUid">
+        UPDATE purchase
+        SET delivery_status = #{deliveryStatus}
+        WHERE imp_uid = #{impUid}
+    </update>
+
+<!-- ResultMap to map purchase and cart items -->
+    <resultMap id="purchaseResultMap" type="kr.spring.goods.vo.PurchaseVO">
+        <id property="purchase_num" column="purchase_num"/>
+        <result property="mem_num" column="mem_num"/>
+        <result property="item_num" column="item_num"/>
+        <result property="item_name" column="item_name"/>
+        <result property="item_photo" column="item_photo"/>
+        <result property="imp_uid" column="imp_uid"/>
+        <result property="amount" column="amount"/>
+        <result property="payDate" column="payDate"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="deliveryStatus" column="deliveryStatus"/>
+        <result property="delivery_address" column="delivery_address"/>
+        <result property="point_used" column="point_used"/>
+        <collection property="cart_items" column="purchase_num" select="getPurchaseItems"/>
+    </resultMap>
+
+
+    <select id="getAllPurchases" resultMap="purchaseResultMap">
+        SELECT p.purchase_num, 
+               p.mem_num, 
+               p.item_num, 
+               i.item_name, 
+               i.item_photo, 
+               p.imp_uid, 
+               p.pay_price AS amount, 
+               p.pay_date AS payDate, 
+               p.pay_status AS payStatus, 
+               p.delivery_status AS deliveryStatus
+        FROM purchase p
+        LEFT JOIN item i ON p.item_num = i.item_num
+        ORDER BY p.pay_date DESC
+    </select>
+    
+    <insert id="insertPurchaseForCart" parameterType="kr.spring.goods.vo.PurchaseVO">
+        INSERT INTO purchase
+        (purchase_num, mem_num, imp_uid, pay_price, pay_date, pay_status, item_num, delivery_status, delivery_address, point_used)
+        VALUES
+        (purchase_seq.nextval, #{mem_num}, #{imp_uid}, #{amount}, SYSDATE, #{payStatus}, #{item_num}, '배송 준비 중', #{delivery_address}, #{point_used})
+    </insert>
+
+	<select id="getNextPurchaseNum" resultType="long">
+        SELECT purchase_seq.nextval FROM dual
+    </select>
+
+	 <insert id="insertPurchaseWithCartItems" parameterType="kr.spring.goods.vo.PurchaseVO">
+        INSERT INTO purchase (purchase_num, mem_num, imp_uid, pay_price, pay_date, pay_status, delivery_status)
+        VALUES (#{purchase_num}, #{mem_num}, #{imp_uid}, #{amount}, SYSDATE, #{payStatus}, '배송 준비 중')
+    </insert>
+	
+	
+</mapper>

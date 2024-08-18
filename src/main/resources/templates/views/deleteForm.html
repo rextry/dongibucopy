@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/basicLayout}">
+<head>
+<meta charset="UTF-8">
+<title>글 삭제</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2>글삭제</h2>
+	<!-- th:object - request에 저장되어있는 자바빈 호출 -->
+	<form action="delete.do" method="post" th:object="${boardVO}">
+		<input type="hidden" th:field="*{num}">
+		<ul>
+			<li>
+				<label for="passwd">비번</label>
+				<input type="password"	th:field="*{passwd}"
+					th:errorclass="field-error">
+				<span th:errors="*{passwd}" class="error-color"></span>
+			</li>
+		</ul>
+		<div class="align-center">
+			<input type="submit" value="삭제">
+			<input type="button" value="목록"
+					onclick="location.href='list.do'">
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,1751 @@
+@charset "UTF-8";
+
+/* YJ */
+/* 챌린지 목록 */
+.challenge-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 600px; /* 컨테이너 너비를 600px로 지정 */
+	margin: 0 auto; /* 중앙에 정렬 */
+	justify-content: space-around;
+}
+
+.result-display{
+	background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chal_listElement {
+	flex: 0 1 150px;
+	margin: 10px 10px; /* 아래쪽에 간격을 둠 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+	padding: 10px; /* 요소 내부 패딩 */
+	border-radius: 5px; /* 둥근 모서리 */
+	background-color: white; /* 배경색 */
+}
+
+.listElement_content {
+	padding: 10px 10px;
+}
+
+/*챌린지 참가 회원 목록*/
+.verify-stats-nav {
+	margin-top: 20px;
+	padding: 20px 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+	font-size: 14px;
+}
+
+.challenge-verify-stats {
+	width: 100%;
+	margin-top: 20px;
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+.joinMem_container {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #ddd;
+	overflow-y: auto;
+}
+
+.joinMem {
+	margin-right: 10px; /* Add some spacing between image and nickname */
+}
+
+.joinMem.arrow {
+	margin-left: auto;
+	margin-right: 0; /* Reset right margin for the arrow */
+}
+
+.paging-btn {
+	text-align: center;
+}
+
+.pageBtn {
+	margin: 0 5px;
+}
+/*챌린지 채팅*/
+#chatDetail {
+	background-color: #F0F8FF;
+}
+
+div.chatInfo {
+	margin: 0 auto;
+	width: 672px;
+	background-color: #5A7081;
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+	display: flex;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	margin-top: .125rem;
+}
+.chatReport{
+	margin-left:auto;
+}
+#chatting_message {
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+	width: 670px;
+	height: 700px;
+	margin: 0 auto;
+	padding: 10px;
+	overflow: auto;
+}
+
+.date-position {
+	text-align: center;
+}
+
+.date-position span {
+	display: inline-block;
+	width: 300px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: #FFB02E;
+	color: white;
+}
+
+.from-position {
+	width: 350px;
+	margin: 10px 0 10px 280px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: flex-end;
+}
+
+.from-position .item {
+	background-color: #98D6C9;
+	padding: 10px;
+	min-width: 235px;
+	min-height: 50px;
+	border-radius: 20px;
+	border-top-right-radius: 0;
+}
+
+.from-position .item img {
+	border-radius: 10px;
+}
+
+.from-position .item2 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding-right: 10px;
+}
+
+.to-position {
+	width: 350px;
+	margin: 10px 0 10px 0;
+}
+
+.to-position div.space-photo {
+	float: left;
+	width: 15%;
+}
+
+.to-position div.space-message {
+	display: flex;
+	align-items: flex-end;
+}
+
+.to-position .item {
+	background-color: pink;
+	padding: 10px;
+	min-width: 235px;
+	min-height: 50px;
+	border-radius: 20px;
+	border-top-left-radius: 0;
+}
+
+.to-position .item2 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 10px;
+}
+
+.greeting-message {
+	width: 230px;
+	min-height: 24px;
+	border-radius: 10px;
+	background-color: #eee;
+	margin: 10px auto;
+	text-align: center;
+	padding: 8px 4px;
+	clear: both;
+}
+
+form#chat_writeForm {
+	margin: 5px auto;
+	padding: 5px;
+	border: none;
+	width: 682px;
+	height: 70px;
+	padding: 0;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+input#fileUpload {
+	display: none;
+}
+div.previewChatImage{
+	margin: 5px auto;
+	padding: 10px;
+	width:670px;
+	background-color:#FFF8DC;
+	border-radius: 10px;
+}
+img#previewChatImage{
+	max-width:660px;
+	display:block;
+	margin: 10px auto;
+}
+span.upload_button {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border-radius: 5px;
+	background-color: #597081;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+}
+
+#chat_content {
+	flex: 1 0 auto;
+	margin: 0;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 60px;
+	resize: none;
+}
+
+#chal_submit {
+	width: 60px;
+	height: 60px;
+	border: none;
+	border-radius: 5px;
+	background-color: #597081;
+	color: white;
+	cursor: pointer;
+}
+/*챌린지 제보*/
+.status.report{
+	background-color:#FF8F1F;
+	padding: 2px 5px;
+	border-radius: 3px;
+	color: white;
+	font-size: 12px;
+}
+
+/* SY */
+/* 챌린지 개설 */
+.challenge-create-container-custom {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.form-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table-custom td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.form-table-custom label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.radio-button-custom, .input-text-custom, .input-textarea-custom, .input-select-custom, .input-date-custom, .input-file-custom {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input-textarea-custom {
+    height: 80px;
+    resize: none;
+}
+
+.input-file-custom {
+    padding: 0;
+}
+
+.align-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button-custom {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button-custom:hover {
+    background-color: #0056b3;
+}
+
+/* 기본적으로 form:radiobutton이 input 요소로 렌더링되므로, input[type="radio"]를 사용하여 스타일 적용 */
+input[type="radio"].custom-radio {
+    display: none; /* 기본 라디오 버튼 숨기기 */
+}
+
+input[type="radio"].custom-radio + label.custom-radio-label {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border: 1px solid #e9eaeb;
+    border-radius: 20px;
+    background-color: white;
+    color: #717275;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 0.9em; /* 글자 크기 줄이기 */
+}
+
+input[type="radio"].custom-radio:checked + label.custom-radio-label {
+    background-color: #f0f8ff;
+    border-color: #999;
+}
+
+input[type="radio"].custom-radio + label.custom-radio-label:hover {
+    background-color:  #e7e7e7;
+    border-color: #999;
+}
+
+/* 챌린지 목록 */
+.image-wrapper {
+    position: relative;
+}
+
+.participants-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* 챌린지 상세 */
+.challenge-detail {
+	width: 50%;
+	margin: auto;
+	padding: 40px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	font-family: Arial, sans-serif;
+}
+
+.challenge-header {
+	text-align: center;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.challenge-header2 {
+	text-align: center;
+	width: 100%;
+	position: relative;
+}
+
+.challenge-header img {
+	width: 100%;
+	height: auto;
+	max-height: 350px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.challenge-header2 img {
+	width: 100%;
+	height: auto;
+	max-height: 350px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.challenge-info-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.challenge-title {
+    font-size: 36px;
+    margin: 0;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 
+        1px 1px 1px rgba(0, 0, 0, 0.3), /* 미세한 그림자 */
+        2px 2px 2px rgba(0, 0, 0, 0.2), /* 중간 그림자 */
+        3px 3px 3px rgba(0, 0, 0, 0.1); /* 가장 진한 그림자 */
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.like-button-container {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.8); /* 테두리 두께를 2px로 설정 */
+    border-radius: 20px; /* 둥근 테두리 */
+    padding: 5px 7px; /* 내부 패딩 */
+    background: rgba(0, 0, 0, 0.5); /* 약간의 반투명 배경 */
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.0em; /* 글자 크기 조정 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 5px; /* 아이콘과 숫자 사이의 간격 */
+}
+
+.like-btn i {
+    font-size: 1.0em; /* 아이콘 크기 */
+    line-height: 1; /* 아이콘과 숫자의 높이 맞춤 */
+}
+
+#likeIcon {
+    margin-right: 5px;
+    transition: color 0.3s;
+}
+
+.like-btn.clicked #likeIcon {
+    color: white; /* 클릭 시 하트 색상 */
+}
+
+#output_fcount {
+    font-size: 1.0em;
+    color: white; /* 숫자 색상 */
+    line-height: 1; /* 숫자 높이 맞춤 */
+}
+
+.challenge-info2 {
+	display: flex;
+	align-items: center;
+	margin-bottom: 16px;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#verify_content {
+	width: 100%;
+}
+
+.challenge-info2 .author-info {
+	display: flex;
+	align-items: center;
+}
+
+.challenge-info2 img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+	vertical-align: middle; /* 이미지와 텍스트 수직 정렬 */
+}
+
+.challenge-info2 p {
+	display: flex;
+	align-items: center;
+}
+
+.challenge-info2 .details {
+	flex-grow: 1;
+	align-items: center; /* 추가된 속성 */
+	display: flex; /* 추가된 속성 */
+	color: #717275; /* 글씨 색상 변경 */
+    font-size: 1.2em; /* 글씨 크기 증가 */
+}
+
+.challenge-stats {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0 10px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.challenge-stats .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.challenge-stats .row:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.challenge-stats .col {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px; /* 각 컬럼 간격 조정 */
+}
+
+.challenge-stats span {
+    margin-bottom: 5px;
+}
+
+.challenge-stats p {
+    margin: 0;
+    color: #333;
+}
+
+.challenge-stats .highlight {
+    color: #007bff; /* 부트스트랩 기본 색상 사용 */
+}
+
+@media (max-width: 767px) {
+    .challenge-stats > div {
+        flex: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .challenge-stats > div:last-child {
+        border-bottom: none;
+    }
+}
+
+.challenge-content h3 {
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.challenge-content p {
+	margin-bottom: 20px;
+	line-height: 1.6;
+	font-size: 14px;
+}
+
+.inline-text {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5; /* 텍스트가 수직 중앙에 정렬되도록 조정 */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.red-custom {
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: #fa5151; /* 기본 배경색을 빨간색으로 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.red-custom:hover {
+    background-color: #ff4c4c; /* 호버 시 조금 더 어두운 색 */
+}
+
+.orange-custom {
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: #5bc1ac; /* 기본 배경색을 #5bc1ac로 설정 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.orange-custom:hover {
+    background-color: #4ea597; /* 호버 시 약간 더 어두운 색상으로 설정 */
+}
+
+.dgray-custom {
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: #c0c0c0; /* 기본 배경색을 회색으로 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dgray-custom:hover {
+    background-color: #a9a9a9; /* 호버 시 조금 더 진한 회색 */
+}
+
+
+.gray-custom {
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    color: #333; /* 글자 색상 회색으로 설정 */
+    border: 1px solid #d6d8db; /* 회색 테두리 */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.gray-custom:hover {
+    background-color: #f8f9fa; /* 호버 시 약간 더 밝은 회색 배경 */
+    border-color: #c6c8ca; /* 호버 시 테두리 색상 변경 */
+}
+
+.gray2-custom {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    color: #333; /* 글자 색상 회색으로 설정 */
+    border: 1px solid #d6d8db; /* 회색 테두리 */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.gray2-custom:hover {
+    background-color: #f8f9fa; /* 호버 시 약간 더 밝은 회색 배경 */
+    border-color: #c6c8ca; /* 호버 시 테두리 색상 변경 */
+}
+
+.btn-custom {
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: #5bc1ac;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    background-color: #48a590; /* 호버 시 조금 더 어두운 색 */
+}
+
+.btn-custom:disabled,
+.btn-custom[disabled] {
+    background-color: #cccccc; /* 비활성화 시 회색 배경 */
+    color: #666666; /* 비활성화 시 텍스트 색상 */
+    cursor: not-allowed; /* 커서 변경 */
+    opacity: 0.6; /* 약간 투명하게 */
+}
+.review-summary {
+	display: flex;
+	align-items: center;
+}
+
+.review-summary .rating-value {
+	font-size: 2.0em;
+	color: #333333;
+}
+
+.review-summary .rating-stars {
+	color: #FFD700; /* Gold color for stars */
+	margin: 0 0.5em;
+}
+
+.review-summary .review-count {
+	margin-left: 0.5em;
+}
+
+.review-summary .btn-all-reviews {
+	margin-left: auto; /* Push the button to the far right */
+}
+
+.review-summary .btn-all-reviews button {
+	padding: 0.3em 0.7em;
+	border: 1px solid #ddd;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.review-summary .btn-all-reviews button:hover {
+	background-color: #f0f0f0;
+}
+
+.review-container {
+	display: flex;
+	overflow-x: auto;
+	flex-direction: row;
+}
+
+.review-item {
+	flex: 0 0 auto;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 15px;
+	margin: 10px;
+	width: 210px;
+	height: 110px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.profile-img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.review-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.review-header .nickname {
+	font-weight: bold;
+}
+
+.review-header .rating {
+	color: #FFD700; /* Gold color for stars */
+}
+
+.review-text {
+	margin-top: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+/* 챌린지 참가 */
+.join-container {
+	max-width: 700px;
+	margin: 50px auto;
+	padding: 40px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: white;
+}
+
+h2 {
+	text-align: center;
+}
+
+.line {
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
+	margin: 10px 0;
+	display: flex; /* 플렉스 박스 레이아웃 적용 */
+	align-items: center; /* 이미지와 텍스트를 수직 중앙 정렬 */
+}
+
+.line img {
+	width: 100px; /* 이미지 크기 조정 */
+	height: 100px; /* 이미지 크기 조정 */
+	border-radius: 8px;
+	margin-right: 10px;
+}
+
+.line .text-content {
+	flex-grow: 1;
+}
+
+.line h3 {
+	font-size: 24px;
+	margin: 10px 0;
+}
+
+.line p {
+	font-size: 16px;
+	margin: 5px 0;
+}
+
+.line .chal_fee {
+	font-size: 20px;
+	font-weight: bold;
+	color: #007BFF;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-center button {
+	background-color: #007BFF;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.align-center button:hover {
+	background-color: #0056b3;
+}
+
+.error-color {
+	color: red;
+	font-size: 14px;
+}
+
+.form-section {
+	border: 1px solid #ddd;
+	padding: 15px;
+	border-radius: 8px;
+	margin-top: 20px;
+	background-color: #f9f9f9;
+}
+
+.form-section label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.form-section input[type="radio"] {
+	margin-right: 5px;
+}
+
+.form-section .error-color {
+	display: block;
+	margin-top: 5px;
+}
+
+.form-section .align-center {
+	margin-top: 20px;
+}
+
+.result-details {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	border: 1px solid #ddd;
+	padding-left: 20px;
+    padding-right: 20px;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+}
+
+.result-details p {
+	display: flex;
+}
+
+.right {
+	margin-left:auto;
+}
+
+/* 커스텀 라디오 버튼 스타일 */
+input.custom-radio[type="radio"] {
+    display: none; /* 기본 라디오 버튼 숨기기 */
+}
+
+input.custom-radio[type="radio"] + label.custom-radio-label {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 5px; /* 버튼 간격 추가 */
+    border: 1px solid #e9eaeb;
+    border-radius: 20px;
+    background-color: white;
+    color: #717275;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 0.9em; /* 글자 크기 줄이기 */
+}
+
+input.custom-radio[type="radio"]:checked + label.custom-radio-label {
+    background-color: #f0f8ff;
+    border-color: #999;
+}
+
+input.custom-radio[type="radio"] + label.custom-radio-label:hover {
+    background-color: #e7e7e7;
+    border-color: #999;
+}
+
+.payment-details {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.payment-details h6 {
+    color: #212529;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+.payment-details .amount-container,
+.payment-details .input-container {
+    display: flex;
+    align-items: center;
+}
+
+.payment-details .amount-container .amount,
+.payment-details .amount-container .currency,
+.payment-details .input-container .currency {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.amount-container .amount {
+    color: #007bff; /* 파란색 */
+}
+
+.amount-container2 .amount {
+    color: #717275;
+}
+
+.payment-details .currency {
+    margin-left: 2px; /* 금액과 단위 사이 간격 최소화 */
+    color: #212529; /* 단위의 색상 */
+}
+
+.payment-details .used-point {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80px;
+    text-align: right;
+    margin-right: 2px; /* input 요소와 단위 사이 간격 최소화 */
+}
+
+.payment-details hr {
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin: 15px 0;
+}
+
+/* 챌린지 참가 목록 */
+.challenge-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.month-section {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto; /* 가운데 정렬 */
+    margin-bottom: 40px;
+}
+
+.month-section h2 {
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+
+.challenge-card {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 40px;
+	margin-bottom: 30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	background-color: #fff;
+	position: relative;
+}
+
+.challenge-card .card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.challenge-card h3 {
+	margin: 0;
+}
+
+.challenge-card .details {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.challenge-card .details div {
+	margin-right: 20px;
+	text-align: center;
+}
+
+.challenge-card .details div:last-child {
+	margin-right: 0;
+}
+
+.challenge-card .details span {
+	display: block;
+	text-align: center;
+}
+
+.host-card {
+	background-color: #f0f8ff; /* 개설자를 위한 특별한 색상 */
+}
+
+/* 챌린지 인증 */
+.verify-container {
+	max-width: 600px;
+	margin: 20px auto;
+	padding: 40px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-section {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.form-section label {
+	width: 120px;
+	font-weight: bold;
+}
+
+.form-section p {
+	flex: 1;
+	margin: 0;
+	padding: 10px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	white-space: pre-line; /* preserves line breaks */
+}
+
+.form-section input[type="file"], .form-section textarea {
+	flex: 1;
+	padding: 10px;
+	/* margin-left: 10px; */
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.form-section .error {
+	color: red;
+	margin-left: 10px;
+}
+
+.align-center {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.align-center button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.align-center button:hover {
+	background-color: #0056b3;
+}
+
+.mandatory {
+	color: red;
+}
+
+/* 챌린지 인증 목록 */
+.challenge-summary {
+	width: 80%;
+	display: flex;
+	align-items: center;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+	padding: 40px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background-color: #ffffff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	flex-direction: column;
+}
+
+.challenge-thumbnail {
+	width: 100%;
+	height: auto;
+	max-height: 200px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.challenge-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.challenge-info h3 {
+	margin: 0 0 10px 0;
+}
+
+.challenge-info .detail-button {
+	align-self: flex-start;
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.challenge-info .detail-button:hover {
+	background-color: #0056b3;
+}
+
+.challenge-stats2 {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.challenge-stat2-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	padding: 20px;
+	width: 40%;
+	text-align: center;
+	flex-grow: 1;
+	justify-content: center;
+}
+
+.challenge-stat2-item1 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	padding: 20px;
+	width: 100%;
+	text-align: center;
+	justify-content: center;
+}
+
+.challenge-stat2-item2 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	padding: 20px;
+	width: 20%;
+	text-align: center;
+	flex-grow: 1;
+	justify-content: center;
+}
+
+.challenge-stat2-item1 .progress {
+	width: 70%; /* progress bar가 부모 요소에 맞추어 100% 너비로 설정 */
+}
+
+.challenge-stat2-item span:first-child {
+	font-size: 14px;
+	color: #888;
+}
+
+.challenge-stat2-item1 span:first-child {
+	font-size: 14px;
+	color: #888;
+}
+
+.challenge-stat2-item2 span:first-child {
+	font-size: 14px;
+	color: #888;
+}
+
+.challenge-stat2-item span:last-child {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.challenge-stat2-item1 span:last-child {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.challenge-stat2-item2 span:last-child {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.challenge-verify-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.challenge-verify-card {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+	position: relative;
+}
+
+.challenge-verify-card img {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+.challenge-verify-card .content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.challenge-verify-card .content .date-status {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.challenge-verify-card .content .date-status .date {
+	font-weight: bold;
+}
+
+.challenge-verify-card .content .date-status .status {
+	padding: 2px 5px;
+	border-radius: 3px;
+	color: white;
+	font-size: 12px;
+}
+
+.challenge-verify-card .content .date-status .status.success {
+	background-color: #28a745;
+}
+
+.challenge-verify-card .content .date-status .status.failure {
+	background-color: #dc3545;
+}
+
+.challenge-verify-card .content .comment {
+	margin-top: 5px;
+}
+
+.challenge-verify-card .buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.challenge-verify-card .buttons button {
+	padding: 3px 8px;
+	border: none;
+	border-radius: 5px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.challenge-verify-card .buttons button:hover {
+	background-color: #ddd;
+}
+
+.align-center {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.align-center .disabled-button {
+	padding: 10px 20px;
+	background-color: #ddd;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 10px;
+	cursor: not-allowed;
+}
+
+.align-center .active-button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.align-center .active-button:hover {
+	background-color: #0056b3;
+}
+
+textarea {
+	width: 70%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.textreview {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+textarea:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.edit-form button {
+	padding: 3px 8px;
+	border: none;
+	border-radius: 5px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.edit-form button.save-button {
+	background-color: #28a745;
+	color: white;
+}
+
+.edit-form button.save-button:hover {
+	background-color: #218838;
+}
+
+/* 챌린지 후기 작성 */
+.review-container2 {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 40px;
+	max-width: 600px;
+	margin: 20px auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-info3 {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+	flex-direction: row;
+}
+
+.challenge-thumbnail {
+	width: 100px;
+	height: 100px;
+	border-radius: 8px;
+	margin-right: 25px;
+	object-fit: cover;
+}
+
+.challenge-details {
+	flex-grow: 1;
+}
+
+.challenge-details h2 {
+	margin: 0 0 8px;
+	font-size: 24px;
+	text-align: left;
+	color: #5bc1ac;
+}
+
+.challenge-details p {
+	margin: 4px 0;
+	color: #666;
+}
+
+.review-rating {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.review-rating label {
+	font-size: 16px;
+	display: block;
+}
+
+.stars {
+	display: flex;
+	gap: 4px;
+	margin-top: 10px;
+}
+
+.star {
+	font-size: 36px;
+	color: #ffcc00;
+	cursor: pointer;
+	transition: color 0.2s, transform 0.2s;
+}
+
+.star:hover, .star:hover ~ .star {
+	color: #ffcc00;
+	transform: scale(1.2);
+}
+
+.star.selected, .star.selected ~ .star {
+	color: #ffcc00;
+}
+
+.star:not(.selected) {
+	color: #ddd;
+}
+
+.review-content label {
+	font-size: 16px;
+	display: block;
+}
+
+.review-content textarea {
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 8px;
+	font-size: 14px;
+	resize: none;
+}
+
+.char-count {
+	text-align: right;
+	font-size: 12px;
+	color: #999;
+	margin-top: 4px;
+}
+
+.submit-button {
+	text-align: center;
+	margin-top: 20px;
+	display: flex;
+    justify-content: space-between; /* 두 버튼 사이의 간격 균일 */
+    gap: 10px; /* 버튼 사이의 간격 조정 */
+}
+
+.cancel-button {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.submit-button input[type="submit"] {
+    padding: 10px;
+    border-radius: 100px;
+    background-color: #597081;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.submit-button2 {
+	margin-top: 20px;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: #597081;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.cancel-button {
+    padding: 10px;
+    border-radius: 100px;
+    background-color: #f0f0f0; /* 연한 회색 */
+    color: #333; /* 진한 회색 텍스트 */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.submit-button input[type="submit"]:hover {
+	background-color: #5bc1ac; /* 호버 시 조금 더 어두운 색 */
+}
+
+.submit-button2:hover {
+	background-color: #5bc1ac; /* 호버 시 조금 더 어두운 색 */
+}
+
+.cancel-button:hover {
+	background-color: #dcdcdc; /* 호버 시 조금 더 어두운 색 */
+}
+
+.review-rating {
+	display: flex;
+	align-items: center;
+}
+
+.rating-error, .content-error {
+	color: red;
+	margin-left: 10px;
+	/* position: absolute; */
+	/* right: 0; */
+}
+
+.review-content2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.review-rating .stars {
+	margin-left: 10px;
+}
+
+/* 챌린지 후기 목록 */
+.review-list-container {
+	width: 60%;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 30px;
+	max-width: 800px;
+	margin: 20px auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-list-container h2 {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 25px;
+	color: #5bc1ac;
+}
+
+.review-summary2 {
+	text-align: left;
+	margin-bottom: 20px;
+	padding-left: 30px; 
+}
+
+.average-rating {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	font-size: 32px;
+}
+
+.rating-value {
+	font-weight: bold;
+	margin-right: 8px;
+}
+
+.rating-value2 {
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+.rating-stars {
+	color: #ffcc00;
+	font-size: 32px;
+}
+
+.rating-stars2 {
+	color: #ffcc00;
+	font-size: 26px;
+}
+
+.review-count {
+	font-size: 16px;
+	color: #666;
+	margin-top: 8px;
+}
+
+.review-count2 {
+	font-size: 14px;
+	color: #666;
+}
+
+
+.sort-select-container {
+	margin-top: 10px;
+}
+
+#sort-select {
+	padding: 5px;
+	font-size: 14px;
+}
+
+.review-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.review-item2 {
+	display: flex;
+	align-items: flex-start;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 16px;
+}
+
+.profile-img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 16px;
+	object-fit: cover;
+}
+
+.profile-pic {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 2px;
+}
+
+.review-content2 {
+	flex-grow: 1;
+}
+
+.review-header2 {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.nickname {
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.date {
+	font-size: 14px;
+	color: #999;
+	margin-right: 10px;
+}
+
+.rating {
+	color: #ffcc00;
+	font-size: 16px;
+}
+
+.review-text {
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+/* 이미지 모달 창 */
+.custom-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 250px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.9); /* 검정색 배경 */
+}
+
+.custom-modal-content {
+	margin: auto;
+	display: block;
+	align-items: center; /* 세로 중앙 정렬 */
+	width: 80%;
+	max-height: 500px;
+	max-width: 500px;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #fff;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.custom-close:hover, .custom-close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* 이미지 미리보기 */
+.image-preview {
+	margin-top: 10px;
+}
+
+.image-preview img {
+	max-width: 100%;
+	max-height: 200px; /* 최대 높이를 200px로 설정 */
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+}

@@ -1,0 +1,621 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃
+---------------------*/
+/* body{
+	font-family: NotoSansKR-Regular, Apple SD Gothic Neo, 맑은 고딕, sans-serif;
+}
+
+#main{
+	width:800px;
+	margin:0 auto;
+	font-size:10pt;
+	font-family:"맑은 고딕";
+}
+#main_header{
+	width:800px;
+	margin:0 auto;
+	margin-bottom:10px;
+	padding:0 10px 0 0;
+}
+#main_body{
+	padding:5px 5px 30px 5px;
+	min-height:500px;
+}
+#main_footer{
+	background-color:yellow;
+}
+
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:none;
+	color:#6C6C6C;
+} */
+/* 페이지 레이아웃
+---------------------*/
+.page-main{
+	width:80%;
+	margin:0 auto;
+}
+.page-one{
+	width:600px;
+	margin:0 auto;
+}
+/* 공통 메시지
+---------------------*/
+.result-display{
+	width:400px;
+	height:200px;
+	margin:50px auto;
+	border:1px solid #000;
+	display:flex;
+	align-items:center;/*세로 정렬*/
+	justify-content:center;/*가로 정렬*/
+}
+.error-color{
+	color:#ff0000;
+}
+/* 공통 정렬
+---------------------*/
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+.align-left{
+	text-align:left;
+}
+/* 상단 메뉴
+---------------------*/
+div#main_menu li{
+	list-style:none;
+}
+div#main_menu ul li{
+	margin-bottom:5px;
+}
+/* 메인
+---------------------*/
+.image-space .horizontal-area{
+	margin:2px;
+	padding:3px;
+	width:220px;
+	height:240px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.image-space .horizontal-area img{
+	width:215px;
+	height:195px;
+}
+.image-space .float-clear{
+	clear:both;
+}
+
+#main-content{
+	width: 0 auto;
+}
+/* 공통 등록, 수정 폼
+---------------------*/
+/* form{
+	width:600px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 30px 10px;
+}
+form ul li label{
+	width:110px;
+	display:inline-block;
+}
+ul {
+	list-style:none;
+}
+input,select{
+	margin-top:4px;
+	padding:5px;
+}
+input[type="text"],input[type="password"],
+                                     input[type="email"]{
+	width:350px;	
+} */
+ .ck-editor__editable_inline {
+        height: 500px; /* 원하는 높이 지정 */
+    }
+/* Admin, MY페이지 공통
+---------------------*/
+.side-bar{
+	margin:10px 10px 10px 0;
+	padding:10px;
+	/*사이드바의 높이가 컨텐트의 높이와 동일하게 자동 조절*/
+	margin-bottom:-9999px;
+	padding-bottom:9999px;
+	background-color:#cecccc;
+}
+.side-bar ul{
+	margin:0;
+	padding:0;
+}
+.side-bar ul li{
+	padding:5px 10px 5px 10px;
+}
+.side-bar ul li img{
+	margin-left:3px;
+}
+.side-height{
+	/*사이드바의 높이가 컨텐트의 높이와 동이라하게 자동 조절하기 위해 흘러넘친 배경색은 숨김*/
+	overflow:hidden;
+	margin-bottom:10px;
+}
+#page_nav{
+	float:left;
+	width:25%;
+	min-height:530px;
+}
+#page_body{
+	width:75%;
+	float:left;
+}
+.page-clear{
+	clear:both;
+}
+/* 공통 프로필 
+---------------------*/
+.my-photo{
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	border-radius:50%;
+}
+/* 공통 목록
+---------------------*/
+form#search_form{
+	width:98%;
+	padding-bottom:0;
+	border:none;
+}
+ul.search{
+	width:380px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+ul.search li{
+	margin:0 0 9px 0;
+	padding:0;
+	display:inline;
+}
+ul.search li select{
+	height:30px;
+}
+.list-space{
+	width:700px;
+	margin:10px auto;
+}
+/* 공통 테이블
+---------------------*/
+/* 공통 테이블 스타일 */
+table {
+    text-align: center; /* 모든 테이블 기본 가운데 정렬 */
+}
+
+/* 기본 테이블 스타일 */
+table.basic-table {
+    width: 100%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    margin-top: 5px;
+    text-align: center; /* 모든 셀의 내용 가운데 정렬 */
+}
+
+table.basic-table td, 
+table.basic-table th {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center; /* 모든 셀의 내용 가운데 정렬 */
+}
+
+/* 스트라이프 테이블 스타일 */
+table.striped-table {
+    width: 100%;
+    border: 1px solid #FFF;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 7px 0;
+    text-align: center; /* 모든 셀의 내용 가운데 정렬 */
+}
+
+table.striped-table td, 
+table.striped-table th {
+    padding: .7em .5em;
+    vertical-align: middle;
+    text-align: center; /* 모든 셀의 내용 가운데 정렬 */
+}
+
+table.striped-table th {
+    font-weight: bold;
+    background: #E1E1E1;
+}
+
+table.striped-table td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+table.striped-table tr:nth-child(odd) {
+    background-color: rgb(250,250,247);
+}
+
+/* 공통 버튼
+---------------------*/
+/* [type="submit"],[type="button"]{
+	height:30px;
+} */
+.menu-btn{
+	width:100%;
+	height:50px;
+	font-size:12pt;
+	background-color:#fcfcfc;
+	border-color:#b7b5b5;
+	border-radius:5px;
+}
+.default-btn{
+	padding:4px 20px;
+	border:1px solid #09aa5c;
+	border-radius:2px;
+	color:#fff;
+	background-color:#09aa5c;
+	font-weight:bold;
+	cursor:pointer;
+}
+.default-btn:hover{
+	background-color: #FFF;
+	color:#09aa5c;
+	transition:0.2s ease-out;
+	height:30px;
+}
+/* 상품
+---------------------*/
+.item-space .horizontal-area{
+	margin:2px;
+	padding:3px;
+	width:200px;
+	height:220px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.item-space .horizontal-area img{
+	width:195px;
+	height:175px;
+}
+.item-space .horizontal-area span{
+	padding:5px;
+	margin:5px;
+}
+.item-space .float-clear{
+	clear:both;
+}
+label[for="order_quatity"]{
+	width:80px;
+}
+.item-image{
+	width:400px;
+	margin:0 0 10px 0;
+	float:left;
+}
+.item-image li{
+	padding:0 0 5px 0;
+}
+.item-detail form{
+	border:none;
+	width:470px;
+	margin:0;
+	float:left;
+}
+#item_total_txt{
+	color:#000;
+	font-weight:bold;
+}
+input[type="number"].quantity-width{
+	width:40px;
+	margin-bottom:3px;
+}
+.sold-out{
+	color:red;
+}
+/* 장바구니
+---------------------*/
+form[id="cart_order"]{
+	border:none;
+}
+/* 장바구니
+---------------------*/
+form[id="order_modify"],form[id="order_form"]{
+	width:860px;
+}
+#delivery_text{
+	color:red;
+}
+ul#delivery_info li span{
+	width:130px;
+	display: inline-block;
+}
+.pay-button{
+	text-align:center;
+}
+
+#paybutton {
+    position: fixed;
+    bottom: 20px; /* 화면 하단에서 20px 위 */
+    width: 700px;          
+    left: 50%; /* 화면 가로 중앙 정렬을 위한 시작점 */
+    transform: translateX(-50%);
+    z-index: 1000; /* 다른 요소들보다 앞에 오도록 설정 */
+     background-color: #66cdaa; /* 마우스 오버 시 조금 더 어두운 파스텔 초록색 */
+    border-color: #66cdaa; /* 마우스 오버 시 조금 더 어두운 테두리 */
+    color: white; /* 흰색 텍스트 */
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* 둥근 글씨체 설정 */
+    font-weight: bold; /* 글자 두껍게 설정 */
+    padding: 15px; /* 버튼 내 패딩 추가 */
+    font-size: 23px; /* 텍스트 크기 설정 */
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+#paybutton:hover {
+  	background-color: #55b895; /* 호버 상태의 더 어두운 색상 */
+    border-color: #55b895; /* 호버 상태의 더 어두운 테두리 색상 */
+}
+
+
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%; /* 세로 가운데 위치 */
+    width: 40px; /* 버튼의 너비 조정 */
+    height: 40px; /* 버튼의 높이 조정 */
+    border-radius: 50%; /* 둥근 버튼 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%); /* 세로 중앙 정렬 */
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.carousel-control img {
+    width: 40px; /* 버튼 아이콘 크기 */
+    height: auto;
+}
+
+.carousel-control.prev-button {
+    left: 10px; /* 왼쪽 버튼 위치 조정 */
+}
+
+.carousel-control.next-button {
+    right: 10px; /* 오른쪽 버튼 위치 조정 */
+}
+.real-small{
+	font-size:5px;
+}
+figure img {
+    max-width: 100%;
+}
+
+
+
+/* box-guide의 스타일 설정 */
+.box-guide {
+	display: inline-block; /* inline-block으로 설정하여 가운데 정렬 */
+    width: 800px; /* 필요에 따라 조정 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+}
+.question-box{
+	margin-top:40px;
+}
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #icon {
+            width: 180px;
+            height: 200px;
+        }
+
+        /* 컨테이너를 중앙에 위치시킵니다 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 가로 방향 가운데 정렬 */
+    padding: 20px; /* 여백 설정 */
+    max-width: 800px; /* 최대 너비 설정, 필요에 따라 조정 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 아코디언 섹션 스타일 */
+.accordion-section {
+    width: 100%; /* 섹션이 컨테이너의 너비에 맞게 설정 */
+    max-width: 800px; /* 최대 너비 설정 */
+    margin-bottom: 15px; /* 섹션 간 간격 설정 */
+}
+
+/* 아코디언 아이템 스타일 */
+.accordion-item {
+    border: 1px solid #ddd; /* 테두리 설정 */
+    border-radius: 8px; /* 모서리 둥글게 설정 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+}
+
+/* 아코디언 헤더 스타일 */
+.accordion-header {
+    background-color: #f8f9fa; /* 배경색 설정 */
+    padding: 15px; /* 여백 설정 */
+    cursor: pointer; /* 클릭 가능한 커서 */
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: space-between; /* 좌우 간격 분배 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+/* 아코디언 바디 스타일 */
+.accordion-body {
+    padding: 15px; /* 여백 설정 */
+    background-color: #ffffff; /* 배경색 설정 */
+    border-top: 1px solid #ddd; /* 상단 테두리 설정 */
+}
+
+/* 오른쪽 정렬 스타일 */
+.align-right {
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+/* 왼쪽 정렬 스타일 */
+.align-left {
+    margin-right: auto; /* 왼쪽 정렬 */
+}
+
+
+        .accordion-item {
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            padding-left : 0px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #000;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+           background-color: #ddd;
+        }
+
+        .accordion-body {
+            padding: 15px;
+            display: none;
+            background-color: #ffffff; /* 본문 배경색 */
+            border-top: 1px solid #ddd;
+        }
+
+        .accordion-body.open {
+            display: block;
+        }
+
+        /* 추가적인 스타일 조정 */
+        .align-right {
+            float: right;
+            font-size: 1.2em; /* 화살표 크기 조정 */
+            line-height: 1em; /* 줄 높이 조정 */
+        }
+        .header-hr{
+	       border: none; /* 기본 테두리 제거 */
+	       height: 3px; /* 선의 두께 설정 */
+	       background-color: black; /* 선의 색상 설정 */
+	       margin: 20px 0; /* 상하 여백 설정 (선의 위와 아래 여백) */
+	       width:100%;
+        }
+        
+        .item-hr{
+	        width:100%;
+	        border: none; /* 기본 테두리 제거 */
+	        height: 1px; /* 선의 두께 설정 */
+	        background-color: black; /* 선의 색상 설정 */
+	        margin: 20px 20px; /* 상하 여백 설정 (선의 위와 아래 여백) */
+        }
+
+.box-guide .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.box-guide .header img {
+    display: flex;
+    margin-right : 30px;
+    align-items: center; /* 아이콘 수직 중앙 정렬 */
+    margin-top: 10px; /* strong과 p 사이에 여백 추가 */
+}
+
+.box-guide .header p {
+    margin: 0;
+    color: #333;
+    white-space: pre-line;
+    flex: 1;
+}
+
+.box-guide .header strong {
+    font-size: 2em;
+}
+
+.box-guide .wrap_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 각 항목 사이의 간격 */
+}
+
+.box-guide dl {
+	font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.box-guide dt {
+	font-size: 17px;
+    font-weight: bold;
+}
+
+.box-guide dd {
+    margin: 0;
+    text-align : left;
+}
+
+dl dt{
+	padding-left: 50px;
+	margin-left : 50px;
+}
+dl dd{
+	padding-right:50px;
+	margin-right :50px;
+}
+
+.main-content{
+	width : 100%;
+	margin : 0 auto;
+}
+
+#page-main{
+	text-align:center;
+}

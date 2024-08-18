@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.goods.dao.GoodsMapper">
+	<select id="getCategories" resultType="map">
+        SELECT DCATE_NUM, DCATE_NAME
+        FROM DONA_CATEGORY
+    </select>
+
+
+	<!-- 상품 등록 -->
+	<insert id="insertGoods" parameterType="goodsVO">
+		INSERT INTO item(
+		item_num,
+		dcate_num,
+		item_name,
+		item_photo,
+		item_detail,
+		item_price,
+		item_stock,
+		item_status)
+		VALUES(
+		item_seq.nextval,
+		#{dcate_num},
+		#{item_name},
+		#{item_photo,jdbcType=VARCHAR},
+		#{item_detail,jdbcType=VARCHAR},
+		#{item_price},
+		#{item_stock},
+		#{item_status,jdbcType=INTEGER})
+	</insert>
+	<!-- sql 태그와 include 태그를 이용한 SQL문 재사용 -->
+    <sql id="goodsSearch">
+    <where>
+        <if test="dcate_num != null and dcate_num != 0">
+            dcate_num = #{dcate_num}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND item_name LIKE '%' || #{keyword} || '%'
+        </if>
+    </where>
+</sql>
+	<!-- 총 등록 상품수 / 검색 상품 수 -->
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		COUNT(*)
+		FROM item
+		<include refid="goodsSearch"></include>
+	</select>
+	
+	<!-- 굿즈샵 전체 목록 / 검색 목록 -->
+	<select id="selectList" parameterType="map" resultType="goodsVO">
+		SELECT
+		*
+		FROM(SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		item_num,
+		<![CDATA[
+		REPLACE(REPLACE(item_name,'<','&lt;'),'>','&gt;')item_name,
+		]]>
+		item_price,
+		item_photo,
+		item_stock,
+		dcate_num,
+		item_status
+		FROM item
+
+		<include refid="goodsSearch"></include>
+		)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	 <!-- 새로운 결제 삽입 SQL 매핑 -->
+  <update id="updateStock" parameterType="map">
+    UPDATE item
+    SET item_stock = item_stock - 
+    <choose>
+        <when test="cart_quantity != null">
+            #{cart_quantity}
+        </when>
+        <otherwise>
+            #{quantity}
+        </otherwise>
+    </choose>
+    WHERE item_num = #{item_num}
+</update>
+   <select id="selectTodayGoods" resultType="goodsVO">
+    SELECT * 
+    FROM (
+        SELECT * 
+        FROM item 
+        ORDER BY item_reg_date DESC
+    ) 
+    WHERE ROWNUM = 1
+</select>
+   
+	   <!-- 상품 수정 -->
+    <update id="updateGoods" parameterType="goodsVO">
+     UPDATE item 
+    SET item_name = #{item_name}, 
+        item_price = #{item_price}, 
+        item_stock = #{item_stock}, 
+        item_photo = #{item_photo,jdbcType=VARCHAR}, 
+        item_detail = #{item_detail,jdbcType=CLOB}, 
+        dcate_num = #{dcate_num}, 
+        item_status = #{item_status,jdbcType=INTEGER} 
+    WHERE item_num = #{item_num}
+</update>
+
+	
+</mapper>

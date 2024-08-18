@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+/*전체 레이아웃*/
+.container-padding {
+	padding: 2rem;
+}
+
+.main-container {
+	height: auto;
+	width: 100%;
+	margin: 2rem auto !important;
+}
+
+.main-section {
+	background-color: #fff;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: 0.75rem;
+	padding: 1.5rem 1.8rem;
+	margin-bottom: 2.5rem;
+}
+
+.left-section, .right-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.left-section {
+	width: 67%
+}
+
+.right-section {
+	width: 28%;
+}
+
+#goods_section {
+	background-color: #f9f9f9;
+}
+
+
+@media ( max-width : 992px) {
+	.top-banner {
+		display: none;
+	}
+
+	.main-section {
+		height: auto;
+		margin: 0 1rem 1.5rem 1rem;
+	}
+	.d-flex {
+		flex-direction: column; /* 세로 방향으로 정렬 */
+	}
+	.left-section, .right-section {
+		/* 태블릿 및 모바일에서는 열을 나누지 않음 */
+		width: 100%; /* 각 섹션이 전체 너비를 차지하도록 설정 */
+		margin-bottom: 1.5rem; /* 섹션 간 간격 설정 */
+	}
+}
+
+#subscription_section{
+	font-family: "Noto Sans KR", sans-serif;
+	font-weight: 600;
+	font-size: 1.35rem;
+	color: #2e2e2e;
+    width: 100%;
+    height: 40vh; /* Viewport height */
+    background-image: url('../upload/5cf1b03f-5087-4ce7-a9ec-c6af0d977ff5_여성 배너.png');
+    background-size: cover; /* Adjust the image to cover the entire div */
+    background-position: center; /* Center the image in the div */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.main-section .title-style {
+	font-family: "Noto Sans KR", sans-serif;
+	font-weight: 600;
+	font-size: 1.35rem;
+	color: #2e2e2e;
+}
+
+/*상단 배너*/
+.top-banner {
+	font-family: "Noto Sans KR", sans-serif;
+	height: auto;
+	width: 100%;
+	margin: 2rem auto !important;
+}
+
+.custom-text-box .banner-title {
+	margin-top: -2rem;
+	margin-right: 8rem;
+	margin-left: 28%;
+	color: #fff;
+	text-align: left;
+	font-size: 4rem;
+	font-weight: 800;
+}
+
+.custom-text-box .banner-title div {
+	margin-bottom: -2rem;
+}
+
+.custom-text-box {
+	height: 282px;
+	background-image: url('/images/banner-background.png') !important; /* 배경 이미지 URL */
+	background-size: cover !important;
+}
+
+.custom-text-box .counter-number, .custom-text-box .counter-number-text
+	{
+	color: #fff !important;
+}
+
+.custom-text-box .counter-number {
+	text-align: left;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.counter-number.updating {
+    opacity: 0.5;
+}
+.custom-text-box .counter-number-text {
+	font-size: 1rem;
+	line-height: 3;
+}
+
+.custom-text-box .counter-text {
+	text-align: left;
+	margin-bottom: -1.2rem;
+	color: #fff;
+}
+
+.carousel-item {
+	text-align: center;
+	padding: 2rem;
+	background-color: #f8f9fa;
+}
+
+.carousel-caption {
+	bottom: 20px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	filter: invert(1);
+}
+
+#top_first_slide, #top_second_slide {
+	padding: 1rem;
+	border: 1px solid #fff;
+	width: 90%;
+	height: 90%;
+	border-radius: 0.75rem !important;
+	overflow: hidden; /* 추가하여 자식 요소가 border-radius에 맞게 잘리는지 확인 */
+}
+
+.cta-section {
+	height: 282px;
+}
+
+
+/* 화면 너비가 1400px 이하인 경우 */
+@media (max-width: 1400px) {
+    .custom-text-box .banner-title {
+        margin-left: 20% !important;
+        font-size: 3.5rem; /* 필요에 따라 글꼴 크기도 조절할 수 있습니다 */
+    }
+    
+    .custom-text-box .banner-title div {
+	margin-bottom: -1.5rem;
+}
+}
+
+#top_second_slide .second-slide-text {
+	font-size: 2.3rem !important;
+}
+
+/* 화면 너비가 1200px 이하인 경우 */
+@media (max-width: 1200px) {
+    .custom-text-box .banner-title {
+        margin-left: 8% !important;
+        font-size: 3.3rem !important; /* 필요에 따라 글꼴 크기도 조절할 수 있습니다 */
+    }
+}
+
+/*챌린지1*/
+
+/*챌린지2*/
+
+/*정기기부*/
+
+/*기부박스*/
+.list-group-item {
+    display: flex;               /* Flexbox 사용 */
+    align-items: center;        /* 아이템을 수직으로 가운데 정렬 */
+    max-width: 100%;           /* 최대 너비 설정 (필요에 따라 조정) */
+    white-space: nowrap;        /* 줄 바꿈 방지 */
+    overflow: hidden;           /* 넘치는 부분 숨기기 */
+    text-overflow: ellipsis;    /* 넘칠 때 '...' 표시 */
+    border: none;
+}
+.list-group-item img{
+	border-radius: 15%;
+}
+.dbox-main1{
+	border:none;
+	-webkit-animation: fade-in-right 1s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 1s ease-in-out; /* 표준 CSS */
+}
+.dbox-main2{
+	-webkit-animation: fade-in-right 1.3s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 1.3s ease-in-out; /* 표준 CSS */
+}
+.dbox-main3{
+	-webkit-animation: fade-in-right 1.6s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 1.6s ease-in-out; /* 표준 CSS */
+}
+.dbox-main4{
+	-webkit-animation: fade-in-right 1.9s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 1.9s ease-in-out; /* 표준 CSS */
+}
+.dbox-main5{
+	-webkit-animation: fade-in-right 2.2s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 2.2s ease-in-out; /* 표준 CSS */
+}
+.dbox-main6{
+	-webkit-animation: fade-in-right 2.5s ease-in-out; /* WebKit 기반 브라우저용 */
+    animation: fade-in-right 2.5s ease-in-out; /* 표준 CSS */
+}
+.dbox-main-text{
+	margin-top: 2px;
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2024-7-30 15:31:21
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+@-webkit-keyframes fade-in-right{0%{-webkit-transform:translateX(50px);transform:translateX(50px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes fade-in-right{0%{-webkit-transform:translateX(50px);transform:translateX(50px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+
+/*굿즈샵*/

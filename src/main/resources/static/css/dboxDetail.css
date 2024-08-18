@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+div.side-height {
+	width: 85%;
+	margin: auto;
+}
+
+#page_body_d {
+	width: 65%;
+	float: left;
+}
+
+#page_nav_d {
+	float: left;
+	width: 35%;
+}
+
+#main_footer {
+	clear: both;
+}
+
+.donator-profile-photo {
+	object-fit: cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position: top;
+	border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+}
+
+.team-profile-photo {
+	object-fit: cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position: top;
+	border-radius: 50%;
+	height: 3rem;
+	width: 3rem;
+}
+
+figure img {
+	max-width: 100%; /*부모 요소의 너비를 넘지 않도록*/
+}
+
+.dbox-main-img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 400px;
+}
+
+.bud-box {
+	padding: 24px 20px !important;
+	border-radius: 8px;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+	margin-left: 2rem !important;
+	margin-right: 2rem !important;
+}
+
+.bud-box-label {
+	font-weight: bold;
+	font-size: 1.2rem;
+}

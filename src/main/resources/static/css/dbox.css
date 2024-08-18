@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.profile-photo{
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	border-radius:50%;
+}
+.team-profile-photo{
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	border-radius:50%;
+	height:2rem;
+	width:2rem;
+}
+
+.category-link.tags-block-link.active {
+	color:#5bc1ac;
+	font-weight: bold;
+	border: 1px solid #5bc1ac;
+}
+
+.pr-propose-btn {
+	border: none;
+	border-bottom: 1px solid #000;
+	background-color: transparent;
+}

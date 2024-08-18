@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 챌린지 -->
+	<definition name="challengeJoinWrite" extends="main">
+		<put-attribute name="title" value="챌린지 참가"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeJoinWrite.jsp"/>
+	</definition>
+	<!-- 마이페이지 -->
+	<definition name="challengeJoinList" extends="mypageLayout">
+		<put-attribute name="title" value="챌린지 참가 목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeJoinList.jsp"/>
+	</definition>
+	<definition name="challengeVerifyWrite" extends="mypageLayout">
+		<put-attribute name="title" value="챌린지 인증"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeVerifyWrite.jsp"/>
+	</definition>	
+	<definition name="challengeVerifyList" extends="mypageLayout">
+		<put-attribute name="title" value="챌린지 인증 목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeVerifyList.jsp"/>
+	</definition>		
+	<definition name="challengeReviewWrite" extends="mypageLayout">
+		<put-attribute name="title" value="챌린지 후기 작성"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeReviewWrite.jsp"/>
+	</definition>		
+	<definition name="challengeReviewList" extends="main">
+		<put-attribute name="title" value="챌린지 후기 목록"/>
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/challenge/challengeReviewList.jsp"/>
+	</definition>	
+	<!-- 관리자 -->	
+	<definition name="adminChallenge" extends="adminInquiry">
+		<put-attribute name="title" value="챌린지 목록" />
+		<put-attribute name="css" value="/WEB-INF/views/admin/adminTableCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/challenge/adminChallenge.jsp"/>
+	</definition>
+	<definition name="adminChallengeDetail" extends="adminInquiry">
+		<put-attribute name="title" value="챌린지 상세" />
+		<put-attribute name="css" value="/WEB-INF/views/challenge/challengeCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/challenge/adminChallengeDetail.jsp"/>
+	</definition>
+</tiles-definitions>

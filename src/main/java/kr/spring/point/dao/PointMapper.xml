@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.point.dao.PointMapper">
+	<!-- 마이페이지 포인트 목록 -->
+	<select id="getMemberPointList" parameterType="map" resultType="pointVO">
+		SELECT *
+		FROM (
+		    SELECT d.*, rownum rnum FROM (
+		        SELECT a.*, b.mem_point, c.pevent_detail
+		        FROM point_log a
+		        JOIN member_detail b ON a.mem_num = b.mem_num
+		        JOIN db_point_event c ON a.pevent_type = c.pevent_type
+		        WHERE a.mem_num = #{mem_num}
+		        ORDER BY a.point_date DESC)d)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}	
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+

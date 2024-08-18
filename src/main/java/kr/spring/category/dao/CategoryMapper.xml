@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.category.dao.CategoryMapper">	
+<insert id="insertDonationCategory" parameterType="donationCategoryVO">
+    INSERT INTO dona_category
+    (dcate_num,
+     dcate_name,
+     dcate_charity,
+     dcate_icon,
+     dcate_content,
+     dcate_banner)
+    VALUES (
+        dona_category_seq.nextval,
+        #{dcate_name},
+        #{dcate_charity},
+        #{dcate_icon,jdbcType=VARCHAR},
+        #{dcate_content},
+        #{dcate_banner,jdbcType=VARCHAR}
+    )
+</insert>
+	<select id="selectList" resultType="donationCategoryVO">
+		 	SELECT
+	 	   *
+	    FROM (SELECT
+	            a.*,
+	            rownum rnum
+	          FROM (SELECT
+	                  dcate_num,
+	                  <![CDATA[
+	                  	REPLACE(REPLACE(dcate_name,'<','&lt;'),'>','&gt;') dcate_name,
+	                  ]]>
+	                  dcate_charity,
+	                  dcate_icon,
+	                  dcate_content,
+	                  dcate_banner
+	                FROM dona_category 	ORDER BY dcate_num DESC<!-- 알리아스 -->
+	                )a)
+	</select>
+	 <update id="updateDonationCategory" parameterType="DonationCategoryVO">
+ 		UPDATE dona_category SET
+ 		   <if test="dcate_icon != null">
+ 		   dcate_icon = #{dcate_icon},
+ 		   </if>
+ 		   <if test="dcate_banner != null">
+ 		   dcate_banner = #{dcate_banner},
+ 		   </if>
+ 		   dcate_name = #{dcate_name},
+ 		   dcate_charity = #{dcate_charity},
+ 		   dcate_content = #{dcate_content}
+ 		WHERE dcate_num = #{dcate_num}
+ 	</update>       
+</mapper>
+
+
+
+
+
+
+

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.dbox.dao.DboxMapper">
+	<insert id="insertDbox" parameterType="dboxVO">
+		INSERT INTO dbox(
+		 	dbox_num,
+			mem_num,
+			dcate_num,
+			dbox_team_type,
+			dbox_team_name,
+			dbox_team_detail,
+			dbox_team_photo,
+			dbox_business_rnum,
+			dbox_title,
+			dbox_photo,
+			dbox_content,
+			dbox_business_plan,
+			dbox_budget_data,
+			dbox_bank,
+			dbox_account,
+			dbox_account_name,
+			dbox_comment,
+			dbox_goal,
+			dbox_sdate,
+			dbox_edate)
+		VALUES(
+		 	dbox_seq.nextval,
+			#{mem_num},
+			#{dcate_num},
+			#{dbox_team_type},
+			#{dbox_team_name},
+			#{dbox_team_detail},
+			#{dbox_team_photo, jdbcType=VARCHAR},
+			#{dbox_business_rnum, jdbcType=VARCHAR},
+			#{dbox_title},
+			#{dbox_photo, jdbcType=VARCHAR},
+			#{dbox_content},
+			#{dbox_business_plan, jdbcType=VARCHAR},
+			#{dbox_budget_data, jdbcType=VARCHAR},
+			#{dbox_bank},
+			#{dbox_account},
+			#{dbox_account_name},
+			#{dbox_comment},
+			#{dbox_goal},
+			#{dbox_sdate},
+			#{dbox_edate})
+	</insert>
+	<!-- sql 태그와 include 태그를 이용해서 SQL문을 재사용 -->
+	<sql id="dboxSearch">
+		<where>
+			<if test="statusVal != null and statusVal != ''">
+				dbox_status=#{statusVal}
+			</if>
+			<if test="category != null and category != ''">
+				<if test="statusVal != null and statusVal != ''">
+				AND
+				</if>
+				dcate_num = #{category}
+			</if>
+			<if test="keyword !=null and keyword != ''">
+				<if test="(category !=null and category != '') or (statusVal != null and statusVal != '')">
+					AND
+				</if>
+				<if test="keyfield == 1">
+					dbox_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					(dbox_team_name LIKE '%' || #{keyword} || '%' OR
+					dbox_team_name LIKE '%' || #{keyword} || '%')
+				</if>
+				<if test="keyfield == 3">
+					dbox_content LIKE '%' || #{keyword} || '%'
+				</if>	
+				<if test="keyfield == 4">
+					(dbox_title LIKE '%' || #{keyword} || '%' OR
+					dbox_content LIKE '%' || #{keyword} || '%')
+				</if>
+			</if>
+		</where>
+	</sql>
+	<sql id="dboxSearchCount">
+		<where>
+			dbox_status=3
+			<if test="category != null and category != ''">
+				AND dcate_num = #{category}
+			</if>
+			<if test="keyword !=null and keyword != ''">
+				AND
+				<if test="keyfield == 1">
+					dbox_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					(dbox_team_name LIKE '%' || #{keyword} || '%' OR
+					dbox_team_name LIKE '%' || #{keyword} || '%')
+				</if>
+				<if test="keyfield == 3">
+					dbox_content LIKE '%' || #{keyword} || '%'
+				</if>	
+				<if test="keyfield == 4">
+					(dbox_title LIKE '%' || #{keyword} || '%' OR
+					dbox_content LIKE '%' || #{keyword} || '%')
+				</if>
+			</if>
+		</where>
+	</sql>
+	<!-- 관리자 검색 -->
+	<sql id="dboxAdminSearch">
+		<where>
+			 <!-- 상태 값이 주어졌을 때, dbox_status 필터링 -->
+	        <if test="(keyword == null or keyword == '') and (statusValue != null and statusValue != '')">
+	            dbox_status IN
+	            <foreach collection="statusValue.split(',')" item="status" open="(" separator="," close=")">
+	                #{status}
+	            </foreach>
+	        </if>  	
+			<if test="keyword !=null and keyword != ''">
+				AND
+				<if test="keyfield == 1">
+					dbox_num LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					dbox_title LIKE '%' || #{keyword} || '%'
+				</if>	
+				<if test="keyfield == 3">
+					mem_num LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					dbox_team_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
+					dcate_name LIKE '%' || #{keyword} || '%'
+				</if>
+			    <!-- 상태 값이 주어졌을 때 추가 필터링 -->
+	            <if test="statusValue != null and statusValue != ''">
+	                AND dbox_status IN
+	                <foreach collection="statusValue.split(',')" item="status" open="(" separator="," close=")">
+	                    #{status}
+	                </foreach>
+	            </if>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 정렬 -->
+	<sql id="dboxOrder">
+		<if test="order == 1">
+			ORDER BY dbox_num DESC
+		</if>
+		<if test="order == 2">
+			ORDER BY dbox_num ASC
+		</if>
+	</sql>
+	<!-- 기부박스 총레코드수/검색 레코드 수 -->
+	<select id="selectListCount" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM dbox 
+		<include refid="dboxSearchCount"></include>
+	</select>
+	<!-- 기부박스 전체 목록/검색 목록 -->
+	<select id="selectList" parameterType="map" resultType="dboxVO">
+		SELECT
+		  *
+		FROM (SELECT 
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  dbox_num,
+			  		  mem_num,
+			  		  dcate_num,
+			  		  dbox_team_type,
+			  		  <![CDATA[
+			  		  REPLACE(REPLACE(dbox_team_name,'<','&lt;'),'>','&gt;') dbox_team_name,
+			  		  REPLACE(REPLACE(dbox_title,'<','&lt;'),'>','&gt;') dbox_title,
+			  		  ]]>
+			  		  dbox_team_photo,
+			  		  dbox_business_rnum,
+			  		  dbox_photo,
+			  		  dcate_name,
+			  		  dcate_icon,
+			  		  dbox_goal,
+			  		  dbox_sdate,
+			  		  dbox_edate,
+			  		  dbox_rdate,
+			  		  dbox_status,
+			  		  total
+			  		FROM dbox 
+                    JOIN dona_category USING(dcate_num)
+                    LEFT OUTER JOIN (SELECT dbox_num, SUM(dbox_do_price) total FROM dbox_donation group by dbox_num ) USING(dbox_num) 	  		
+			  		<include refid="dboxSearch"></include>			  		
+					<include refid="dboxOrder"></include>
+			  		)a)	
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>		
+	</select>
+	<!-- 관리자 기부박스 총레코드수/검색 레코드 수 -->
+	<select id="selectAdminListCount" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM dbox 
+		JOIN dona_category USING(dcate_num)
+  		LEFT OUTER JOIN (SELECT dbox_num, SUM(dbox_do_price) total 
+			 FROM dbox_donation group by dbox_num ) 
+	    USING(dbox_num)
+		<include refid="dboxAdminSearch"></include>
+	</select>
+	<!-- 관리자 기부박스 전체 목록/검색 목록 -->
+	<select id="selectAdminList" parameterType="map" resultType="dboxVO">
+		SELECT
+		  *
+		FROM (SELECT 
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  dbox_num,
+			  		  mem_num,
+			  		  dcate_num,
+			  		  dbox_team_type,
+			  		  <![CDATA[
+			  		  REPLACE(REPLACE(dbox_team_name,'<','&lt;'),'>','&gt;') dbox_team_name,
+			  		  REPLACE(REPLACE(dbox_title,'<','&lt;'),'>','&gt;') dbox_title,
+			  		  ]]>
+			  		  dbox_team_photo,
+			  		  dbox_business_rnum,
+			  		  dbox_photo,
+			  		  dcate_name,
+			  		  dcate_icon,
+			  		  dbox_goal,
+			  		  dbox_sdate,
+			  		  dbox_edate,
+			  		  dbox_rdate,
+			  		  dbox_status
+			  		FROM dbox 
+                    JOIN dona_category USING(dcate_num)
+			  		LEFT OUTER JOIN (SELECT dbox_num, SUM(dbox_do_price) total 
+						 FROM dbox_donation group by dbox_num ) 
+				    USING(dbox_num)  
+			  		<include refid="dboxAdminSearch"></include>
+				    <include refid="dboxOrder"></include>
+			  		)a)	
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+		
+	</select>
+	<!-- 기부박스 기부신청 등록 -->
+	<insert id="insertDboxDonation" parameterType="dboxDonationVO">
+		INSERT INTO dbox_donation(
+		 	dbox_do_num,
+		 	dbox_num,
+			mem_num,
+			dbox_do_price,
+			dbox_do_point,
+			<if test="dbox_imp_uid != null and dbox_imp_uid != ''">
+			dbox_imp_uid,
+			</if>
+			dbox_do_comment,
+			dbox_do_status,
+			dbox_do_annony)
+		VALUES(
+		 	dbox_donation_seq.nextval,
+		 	#{dbox_num},
+			#{mem_num},
+			#{dbox_do_price},
+			#{dbox_do_point},
+			<if test="dbox_imp_uid != null and dbox_imp_uid != ''">
+			#{dbox_imp_uid},
+			</if>
+			#{dbox_do_comment},
+			#{dbox_do_status},
+			#{dbox_do_annony})
+
+	</insert>
+	
+	<!-- 마이페이지 제안한 기부박스 목록 -->
+	<select id="getDboxByMem_num" parameterType="map" resultType="dboxVO">
+		SELECT
+	 	   *
+	    FROM (SELECT
+	            a.*,
+	            rownum rnum
+	          FROM (SELECT
+	                  d.*, c.dcate_name dcate_name, c.dcate_icon dcate_icon, t.total
+	                FROM dbox d
+	                JOIN dona_category c
+	                ON d.dcate_num = c.dcate_num
+	                LEFT OUTER JOIN (
+	                	SELECT dbox_num, SUM(dbox_do_price) total 
+	                	FROM dbox_donation group by dbox_num ) t
+	                ON d.dbox_num = t.dbox_num
+	                WHERE d.mem_num=#{mem_num} ORDER BY d.dbox_num DESC
+	                )a)
+	    <![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

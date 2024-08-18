@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+ul {
+	padding: 0;
+}
+
+.form-error {
+	color: red;
+}
+
+.clickable-image, .clickable {
+	cursor: pointer;
+}
+
+/*1:1문의*/
+#inquiry_form textarea, #inquiry_reply_form textarea, #report_reply_form textarea {
+	resize: none;
+}
+
+#inquiryCategoryText {
+	background-color: #597081;
+	display: inline-block;
+	width: 5rem;
+	height: 2rem;
+	border-radius: 12px;
+	text-align: center;
+	color: #fff;
+	padding: 0.2rem 0.4rem;
+	margin-right: 0.5rem;
+}
+
+.document-image {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.5rem;
+}
+
+.report-image {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.5rem;
+}
+
+.cs-date {
+	font-size: 0.75rem;
+}
+
+#inquiry_reply, #report_reply {
+	height: 20rem !important;
+}
+
+#reply_btn, #modifyBtn {
+	height: 2.5rem;
+	padding: 0;
+}
+
+#list_btn {
+	border: none;
+	background-color: #a3a3a3;
+	color: #fff;
+	border-radius: 3px;
+}
+
+#reportCategoryText {
+	background-color: #597081;
+	display: inline-block;
+	min-width: 6rem;
+	height: 2rem;
+	border-radius: 8px;
+	text-align: center;
+	color: #fff;
+	padding: 0.2rem 0.4rem;
+	margin-right: 0.5rem;
+}
+
+#report_status {
+	width: 4rem;
+	background-color: #dce6e8;
+	border-radius: 4px;
+	padding: 0.2rem 0.5rem;
+	font-weight: 600;
+}
+
+/*faq*/
+.user-faq-item {
+	list-style: none;
+}
+
+#faq_list {
+	padding: 0;
+}
+
+/* #insert_faq {
+	width: 75%;
+	border: 1px solid #000000;
+	border-radius: 6px;
+	padding: 5px 10px;
+	margin: 4rem 0 2rem 3.2rem;
+} */
+.faq-category-text {
+	color: #597081;
+	font-size: 0.8rem;
+}
+
+.user-faq-item {
+	border-bottom: 1px solid #cfcfcf;
+	margin: 0.5rem 0;
+	padding: 0.6rem 0.8rem;
+	cursor: pointer;
+}
+
+.faq-content-div {
+	width: 75%;
+}
+
+.faq-question-text {
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.tag-blocks-admin .tags-block-link {
+	border: 1px solid #a19f9f !important;
+}
+
+.tag-blocks-admin .tags-block-link:hover {
+	border: 1px solid #292929 !important;
+}
+
+.button-container {
+	text-align: right; /* Aligns the content to the right */
+}
+
+.button-container .modifyBtn, .button-container .deleteBtn {
+	margin-left: 5px; /* Adds some space between the buttons */
+}
+
+.form-div {
+	margin: 4rem 0 2rem 3.2rem;
+}
+
+.form-control {
+	height: 3rem !important;
+}
+
+#faq_answer, #mfaq_answer, #inquiry_content, #report_content {
+	height: 26rem !important;
+	resize: none;
+}
+
+.custom-form-label {
+	font-size: 1.2rem;
+}
+
+.custom-form-check-label {
+	margin: -0.3rem 0 0 0 !important;
+	color: #6b6b6b;
+	font-size: 0.9rem !important;
+}
+
+.form-check-radio {
+	display: flex;
+}
+
+/*신고*/
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.report-content {
+	display: inline-block;
+	white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+	overflow: hidden; /* 넘치는 텍스트를 숨김 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임(...)으로 표시 */
+	max-width: 300px;
+}
+
+.content-img {
+	max-width: 25rem;
+}

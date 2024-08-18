@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 기부박스 목록 -->
+	<definition name="dboxList" template="/WEB-INF/views/template/layout_bootstrap.jsp">
+		<put-attribute name="title" value="기부박스"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxList.jsp"/>
+		<put-attribute name="css" value="/WEB-INF/views/dbox/dboxCSS.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	
+	<!-- 기부박스 상세페이지 -->
+	<definition name="dboxDetailContent" template="/WEB-INF/views/template/layout_dboxDetail.jsp">
+		<put-attribute name="title" value="기부박스 소개"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxDetailContent.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/dbox/dboxDetailNav.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="dboxDetailDonators" extends="dboxDetailContent">
+		<put-attribute name="title" value="기부현황"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxDetailDonators.jsp"/>
+	</definition>
+	<definition name="dboxDetailNews" extends="dboxDetailContent">
+		<put-attribute name="title" value="소식"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxDetailNews.jsp"/>
+	</definition>
+	<!-- 기부박스 예시 -->
+	<definition name="dboxExample" extends="dboxDetailContent">
+		<put-attribute name="title" value="기부박스 제안하기 : 예시 보기"/>
+		<put-attribute name="nav" value="/WEB-INF/views/dbox/dboxExampleNav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxExample.jsp"/>
+	</definition>
+	<!-- 기부박스 결제완료 -->
+	<definition name="dboxDonation" template="/WEB-INF/views/template/layout_bootstrap.jsp">
+		<put-attribute name="title" value="기부박스"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxDonation.jsp"/>
+		<put-attribute name="css" value="/WEB-INF/views/dbox/dboxCSS.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+
+	<!-- 기부박스 제안하기 -->
+	<definition name="dboxPropose" template="/WEB-INF/views/template/layout_dbox.jsp">
+		<put-attribute name="title" value="기부박스 제안하기"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="nav" value=""/>
+		<put-attribute name="css" value="/WEB-INF/views/dbox/dboxCSS.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxPropose.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="dboxProposeStep1" extends="dboxPropose">
+		<put-attribute name="title" value="기부박스 제안하기 : 1.나의 다짐"/>
+		<!--<put-attribute name="nav" value="/WEB-INF/views/dbox/nav_dbox.jsp"/>-->
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxProposeStep1.jsp"/>
+	</definition>
+	<definition name="dboxProposeStep2" extends="dboxPropose">
+		<put-attribute name="title" value="기부박스 제안하기 : 2.팀 및 계획 작성"/>
+		<!--<put-attribute name="nav" value="/WEB-INF/views/dbox/nav_dbox.jsp"/>-->
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxProposeStep2.jsp"/>
+	</definition>
+	<definition name="dboxProposeStep3" extends="dboxPropose">
+		<put-attribute name="title" value="기부박스 제안하기 : 3.내용 작성"/>
+		<!--<put-attribute name="nav" value="/WEB-INF/views/dbox/nav_dbox.jsp"/>-->
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxProposeStep3.jsp"/>
+	</definition>
+	<definition name="dboxProposeEnd" extends="dboxPropose">
+		<put-attribute name="title" value="기부박스 제안하기 : 제안 완료"/>
+		<!--<put-attribute name="nav" value="/WEB-INF/views/dbox/nav_dbox.jsp"/>-->
+		<put-attribute name="body" value="/WEB-INF/views/dbox/dboxProposeEnd.jsp"/>
+	</definition>
+	<!-- 마이페이지 -->
+	<definition name="dboxMyPropose" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 제안한 기부박스" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/dboxMyPropose.jsp"/>
+	</definition>
+	<definition name="dboxMyDonation" extends="mypageLayout">
+		<put-attribute name="title" value="MyPage - 기부박스 기부내역" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/dboxMyDonation.jsp"/>
+	</definition>
+	<!-- 관리자 -->
+	<definition name="dboxAdmin" extends="adminInquiry">
+		<put-attribute name="title" value="기부박스 관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/dbox/dboxAdmin.jsp"/>
+	</definition>
+	<definition name="dboxAdminStatus" template="/WEB-INF/views/template/layout_dboxAdminDetail.jsp">
+		<put-attribute name="title" value="기부박스 상태관리" />
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="css" value="/WEB-INF/views/admin/adminTableCSS.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/template/nav_admin.jsp"/>
+		<put-attribute name="AdmminBody" value="/WEB-INF/views/admin/dbox/dboxAdminStatus.jsp"/>
+		<put-attribute name="detailBody" value="/WEB-INF/views/dbox/dboxExample.jsp"/>
+		<put-attribute name="detailNav" value="/WEB-INF/views/dbox/dboxExampleNav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+</tiles-definitions>

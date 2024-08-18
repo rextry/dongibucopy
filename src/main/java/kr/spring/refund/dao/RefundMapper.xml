@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.refund.dao.RefundMapper">
+	<insert id="insertRefund" parameterType="refundVO">
+		INSERT INTO refund(
+			refund_num,
+			mem_num,
+			payment_type,
+			imp_uid,
+			amount,
+			reason,
+			<if test="reason_other != null and reason_other != ''">
+				reason_other,
+			</if>
+			return_point
+		)VALUES(
+			refund_seq.nextval,
+			#{mem_num},
+			#{payment_type},
+			#{imp_uid},
+			#{amount},	
+			#{reason},
+			<if test="reason_other != null and reason_other != ''">
+				#{reason_other},
+			</if>
+			#{return_point}
+		)
+	</insert>
+	
+	<sql id="refund_status">
+	    <if test="refund_status != 3">
+	        AND refund_status = #{refund_status}
+	    </if>
+	</sql>
+
+	<select id="getRefundList" parameterType="map" resultType="refundVO">
+    SELECT
+        *
+    FROM (
+        SELECT
+            a.*,
+            rownum rnum
+        FROM (
+            SELECT
+                *
+            FROM
+                refund
+            WHERE 1=1
+            <include refid="refund_status"/>
+            ORDER BY reg_date DESC
+        ) a
+    )
+    <![CDATA[
+    WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]> 
+</select>
+<select id="getRefundCount" parameterType="map" resultType="int">
+    SELECT
+        COUNT(*)
+    FROM
+        refund WHERE 1=1
+    <include refid="refund_status"/>
+</select>
+</mapper>
+
+
+
+
+
+
+

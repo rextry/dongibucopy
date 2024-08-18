@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/basicLayout}">
+<head>
+<meta charset="UTF-8">
+<title>글 쓰기</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2>글쓰기</h2>
+	<!-- th:object - request에 저장되어있는 자바빈 호출 -->
+	<form action="insert.do" method="post" th:object="${boardVO}">
+		<ul>
+			<li>
+				<label for="writer">작성자</label>
+				<!-- th:field : 자바빈의 필드 지정
+				*{writer} = boardVO.writer (*로 th:object값을 호출...?)
+				 -->
+				<input type="text"	th:field="*{writer}"
+					th:errorclass="field-error">
+				<span th:errors="*{writer}" class="error-color"></span>
+			</li>
+			<li>
+				<label for="title">제목</label>
+				<input type="text"	th:field="*{title}"
+					th:errorclass="field-error">
+				<span th:errors="*{title}" class="error-color"></span>
+			</li>
+			<li>
+				<label for="passwd">비번</label>
+				<input type="password"	th:field="*{passwd}"
+					th:errorclass="field-error">
+				<span th:errors="*{passwd}" class="error-color"></span>
+			</li>
+			<li>
+				<label for="content">내용</label>
+				<textarea th:field="*{content}"
+					th:errorclass="field-error"></textarea>
+				<span th:errors="*{content}" class="error-color"></span>
+			</li>
+		</ul>
+		<div class="align-center">
+			<input type="submit" value="등록">
+			<input type="button" value="목록"
+					onclick="location.href='list.do'">
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.cart.dao.CartMapper">
+	<resultMap type="cartVO" id="cartMap">
+		<result property="goods.item_num" column="item_num"/>
+		<result property="goods.item_name" column="item_name"/>
+		<result property="goods.item_price" column="item_price"/>
+		<result property="goods.item_stock" column="item_stock"/>
+		<result property="goods.item_photo" column="item_photo"/>
+	</resultMap>
+	<!-- 항목 존재 여부 확인 -->
+	<select id="checkCartItem" parameterType="cartVO" resultType="int">
+		SELECT COUNT(*) 
+		FROM cart 
+		WHERE item_num = #{item_num} AND mem_num = #{mem_num}
+	</select>
+	<!-- 기존 항목 수량 업데이트 -->
+	<update id="updateCartQuantity" parameterType="cartVO">
+		UPDATE cart 
+		SET cart_quantity = cart_quantity + #{cart_quantity}
+		WHERE item_num = #{item_num} AND mem_num = #{mem_num}
+	</update>
+
+	<!-- 장바구니 등록 -->
+	<insert id="insertCart" parameterType="cartVO">
+	INSERT INTO cart(
+	cart_num,
+	item_num,
+	cart_quantity,
+	mem_num,
+	item_price)
+	VALUES(
+	cart_seq.nextval,
+	#{item_num},
+	#{cart_quantity},
+	#{mem_num},
+	#{item_price}
+	)
+	</insert>
+	<!-- 장바구니 상품 수 -->
+	<select id="cartRowCount" parameterType="map"
+		resultType="integer">
+	SELECT	
+	COUNT(*)
+	FROM cart
+	</select>
+	<!-- 장바구니 목록 -->
+	<select id="cartList" parameterType="map" resultMap="cartMap">		
+		SELECT *
+		FROM(SELECT a.*,
+		rownum rnum FROM (SELECT 
+		<![CDATA[
+		REPLACE(REPLACE(item_name,'<','&lt;'),'>','&gt;')item_name,
+		]]>
+		c.cart_quantity,
+		c.cart_num,
+		c.item_price,
+		c.item_num,
+		i.item_stock,
+		i.item_photo
+		FROM cart c
+		JOIN item i  ON c.item_num = i.item_num   	
+		ORDER BY cart_num DESC)a)
+        <![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+</mapper>

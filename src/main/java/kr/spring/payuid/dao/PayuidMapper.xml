@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.payuid.dao.PayuidMapper">	
+	<insert id="registerPayUId" parameterType="payuidVO">
+		INSERT INTO pay_uid 
+		(pay_uid, 
+		mem_num
+		<if test="easypay_method != null">
+ 		   ,easypay_method
+ 		</if>
+ 		<if test="card_nickname != null">
+ 		   ,card_nickname
+ 		</if>
+		) 
+		VALUES 
+		(#{pay_uid},
+		 #{mem_num}
+		 <if test="easypay_method != null">
+ 		   ,#{easypay_method}
+ 		</if>
+ 		 <if test="card_nickname != null and card_nickname != ''">
+ 		   ,#{card_nickname}
+ 		</if>	
+		 )
+	</insert>
+	<select id="getPayuidByMethod" resultType="payuidVO" parameterType="payuidVO">
+		SELECT * FROM pay_uid WHERE mem_num=#{mem_num}  
+		<if test="easypay_method != null">
+ 		   AND easypay_method=#{easypay_method}
+ 		</if>
+ 		<if test="card_nickname != null and card_nickname != ''">
+ 		   AND card_nickname=#{card_nickname}
+ 		</if>
+	</select>
+</mapper>
+
+
+
+
+
+
+

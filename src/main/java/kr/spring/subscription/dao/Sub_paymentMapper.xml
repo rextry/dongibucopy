@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.subscription.dao.Sub_paymentMapper">
+    <select id="getSub_paymentCountByMem_num" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+    FROM sub_payment sp
+    LEFT JOIN subscription s ON sp.sub_num = s.sub_num
+    LEFT JOIN dona_category dc ON s.dcate_num = dc.dcate_num
+    <where>
+        AND sp.mem_num = #{mem_num}
+        <if test="keyword != null and keyword != ''">
+            <if test="keyfield == 1">
+                AND dc.dcate_charity LIKE '%' ||#{keyword}|| '%'
+            </if>
+            <if test="keyfield == 2">
+                AND (s.sub_method LIKE '%' || #{keyword} || '%' OR
+                         s.card_nickname LIKE '%' || #{keyword} || '%' OR
+                         s.easypay_method LIKE '%' || #{keyword} || '%')
+            </if>
+        </if>
+    </where>
+</select>
+
+<select id="getSub_paymentByMem_num" parameterType="map" resultType="sub_paymentVO">
+    SELECT *
+    FROM (
+        SELECT a.*, rownum rnum
+        FROM (
+            SELECT 
+                sp.sub_pay_num,
+                sp.sub_num,
+                sp.sub_price,
+                sp.sub_pay_date,
+                sp.sub_pay_status,
+                s.dcate_num,
+                s.sub_method,
+                s.easypay_method,
+                s.card_nickname,
+                dc.dcate_charity
+            FROM sub_payment sp
+            LEFT JOIN subscription s ON sp.sub_num = s.sub_num
+            LEFT JOIN dona_category dc ON s.dcate_num = dc.dcate_num
+            WHERE s.mem_num = #{mem_num}
+            <if test="keyword != null and keyword != ''">
+                <if test="keyfield == 1">
+                    AND dc.dcate_charity LIKE '%' || #{keyword} || '%'
+                </if>
+                <if test="keyfield == 2">
+                    AND (s.sub_method LIKE '%' || #{keyword} || '%' OR
+                         s.card_nickname LIKE '%' || #{keyword} || '%' OR
+                         s.easypay_method LIKE '%' || #{keyword} || '%')
+                </if>
+            </if>
+            ORDER BY sp.sub_pay_date DESC
+        ) a
+    )
+    <![CDATA[
+    WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>
+</select>
+
+
+
+</mapper>

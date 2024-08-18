@@ -1,0 +1,18 @@
+@Bean
+    public JavaMailSenderImpl javaMailSenderImpl() {
+    	Properties prop = new Properties();
+    	prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+    	prop.put("mail.smtp.starttls.enable", "true");
+    	prop.put("mail.transport.protocol", "smtp");
+    	prop.put("mail.smtp.auth", "true");
+    	prop.put("mail.debug", "true");
+    	
+    	JavaMailSenderImpl javaMail = new JavaMailSenderImpl();
+    	javaMail.setHost("smtp.gmail.com");
+    	javaMail.setPort(587);
+    	javaMail.setDefaultEncoding("utf-8");
+    	javaMail.setUsername("dragonyxit@gmail.com");
+    	javaMail.setPassword("zgnwhuaalygaqyfm");
+    	javaMail.setJavaMailProperties(prop);
+    	return javaMail;
+    }

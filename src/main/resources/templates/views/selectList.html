@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/basicLayout}">
+<head>
+<meta charset="UTF-8">
+<title>목록</title>     <!-- 타임리프 속성 -->
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2>목록</h2>
+	<div class="align-right">
+		<input type="button" value="글쓰기" 
+					onclick="location.href='insert.do'">
+	</div>
+
+	<div class="result-display" th:if="${count==0}">표시할 내용이 없습니다.</div>
+	<div th:if="${count > 0}">
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+		</tr>
+		<tr th:each="board : ${list}">
+			<td>[[${board.num}]]</td>
+			<td th:text="${board.num}"></td>
+			<td><a th:href="@{detail.do(num=${board.num})}" th:text="${board.title}"></a></td>
+			<td th:text="${board.writer}"></td>
+			<td th:text="${board.reg_date}"></td>
+		</tr>
+	</table>
+	<div class="align-center" th:utext="${page}">
+	
+	</div>
+	</div>
+</div>
+</body>
+</html>
